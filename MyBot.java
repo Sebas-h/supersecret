@@ -13,7 +13,7 @@ public class MyBot {
     // http://www.ai-contest.com/resources.
     public static void DoTurn(PlanetWars pw) {
 	// (1) If we currently have a fleet in flight, just do nothing.
-	if (pw.MyFleets().size() >= 1) {
+	if (pw.MyFleets().size() >= 2) {
 	    return;
 	}
 	// (2) Find my strongest planet.
