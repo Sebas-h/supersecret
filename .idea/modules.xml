@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/supersecret.iml" filepath="$PROJECT_DIR$/.idea/supersecret.iml" />
+      <module fileurl="file://$PROJECT_DIR$/supersecret.iml" filepath="$PROJECT_DIR$/supersecret.iml" />
     </modules>
   </component>
 </project>
