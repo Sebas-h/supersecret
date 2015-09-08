@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run without visualizer" type="JarApplication" factoryName="JAR Application">
+    <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+    <option name="JAR_PATH" value="$PROJECT_DIR$/src/tools/PlayGame.jar" />
+    <option name="PROGRAM_PARAMETERS" value="maps/map8.txt 1000 1000 log.txt &quot;java MyBot&quot; &quot;java MyBot&quot; " />
+    <option name="WORKING_DIRECTORY" value="C:\Users\jluca_000\IdeaProjects\supersecret\src" />
+    <envs />
+    <method />
+  </configuration>
+</component>
