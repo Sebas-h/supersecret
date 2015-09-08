@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 
 public class MyBot {
@@ -13,7 +14,7 @@ public class MyBot {
     // http://www.ai-contest.com/resources.
     public static void DoTurn(PlanetWars pw) {
         // (1) If we currently have a fleet in flight, just do nothing.
-        if (pw.MyFleets().size() >= 1) {
+        if (pw.MyFleets().size() >= 4) {
             return;
         }
         // (2) Find my strongest planet.
@@ -44,7 +45,7 @@ public class MyBot {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         String line = "";
         String message = "";
         int c;
