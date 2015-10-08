@@ -66,7 +66,7 @@ public class MyBot {
     public class Node{
 
         public PlanetWars gamestate;
-        public ArrayList<PlanetWars> newval = new ArrayList<PlanetWars>();
+        public ArrayList<PlanetWars> route = new ArrayList<PlanetWars>();
 
 
 
