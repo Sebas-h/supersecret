@@ -45,6 +45,39 @@ public class MyBot {
         }
     }
 
+    /* PSEUDO CODE
+    Breadth first zoeken naar nodes
+    elke node krijgt een waarde toegekent op basis van de eigen growth rate ten opzichte van die van de tegenstander (misschien het aantal schepen ook meenemen)
+    zoeken tot een bepaalde diepte bereikt is
+    de node met de beste waarde wordt gekozen.
+
+    functie:
+    params: startnode
+    nodeList = [startNode]
+
+
+    while nodeList is not empty{
+
+    }
+
+     */
+
+
+    public class Node{
+
+        public PlanetWars gamestate;
+        public ArrayList<PlanetWars> route = new ArrayList<PlanetWars>();
+
+
+    }
+
+    public void minimax(Node startNode){
+        ArrayList<Node> nodes = new ArrayList<Node>();
+
+
+
+    }
+
     public static void main(String[] args){
         String line = "";
         String message = "";
