@@ -64,20 +64,45 @@ public class MyBot {
 
 
     public class Node{
-
         public PlanetWars gamestate;
-        public ArrayList<PlanetWars> route = new ArrayList<PlanetWars>();
 
 
+        public Node(PlanetWars planetWars){
+            gamestate = planetWars;
+        }
+
+
+        public ArrayList<Node> collapse() {
+            ArrayList<Node> output = new ArrayList<Node>();
+            PlanetWars newstate = new PlanetWars(this.gamestate.gamestateString);
+
+            // For all neutral or hostile planets
+            for (Planet planet : this.gamestate.NotMyPlanets()) {
+
+                newstate = new PlanetWars(gamestate.gamestateString);
+            }
+            output.add(new Node(newstate));
+            return output;
+        }
 
     }
 
     public void minimax(Node startNode){
         ArrayList<Node> nodes = new ArrayList<Node>();
+        nodes.add(startNode);
+        while (nodes.size() > 0)
+        {
+            // Collapse node
+            // dismiss negative nodes
+            // simulate opponents reaction
+            // add viable states to the nodes array
+        }
 
 
 
     }
+
+
 
     public static void main(String[] args){
         String line = "";
