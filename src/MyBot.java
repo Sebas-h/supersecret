@@ -1,7 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.*;
 
 public class MyBot {
@@ -16,56 +13,53 @@ public class MyBot {
     // your own. Check out the tutorials and articles on the contest website at
     // http://www.ai-contest.com/resources.
     public static void DoTurn(PlanetWars pw) {
+
+        //TODO PROGRAM FAILS MISERABLY WHEN NO POSSIBLE ATTACKS FOR ANY PLAYER CAN BE FOUND!!!!!
         // Zoek beste aanval tegenstander
         State enemy_attack = best_attack(pw, false);
-
-
-
-
+        System.err.println(enemy_attack.attack.source.PlanetID());
         // Zoek de beste aanval met de aanname dat de beste aanval van de tegenstander gelukt is.
         State our_attack = best_attack(enemy_attack.planetWars, true);
-        File file = new File("err.txt");
-        try{
-            PrintStream p = new PrintStream(file);
-            System.setErr(p);
-            System.err.println("test");
-            System.err.println(enemy_attack.attack.source.PlanetID() + " " + enemy_attack.attack.destination.PlanetID() + " " + enemy_attack.attack.amount);
-            System.err.println(our_attack.attack.source.PlanetID() + " " + our_attack.attack.destination.PlanetID() + " " + our_attack.attack.amount);
+        System.err.println(our_attack.attack.source.PlanetID() + " " + our_attack.attack.destination.PlanetID() + " " + our_attack.attack.amount);
 
+        if (our_attack.attack != null) {
+            attack_to_turn(our_attack.attack, pw);
         }
-        catch (FileNotFoundException e){
-            System.exit(-1);
-        }
-        attack_to_turn(our_attack.attack, pw);
+
 
     }
 
-    private static void attack_to_turn(Attack attack, PlanetWars planetWars){
+    private static void attack_to_turn(Attack attack, PlanetWars planetWars) {
         planetWars.IssueOrder(attack.source.PlanetID(), attack.destination.PlanetID(), attack.amount);
     }
 
-    private static State best_attack(PlanetWars planetWars, boolean me){
+    private static State best_attack(PlanetWars planetWars, boolean me) {
         List<Attack> possible_attacks = new ArrayList<Attack>();
-        for(Planet own_planet : getPlanets(planetWars, me)){
-            for(Planet planet : planetWars.Planets()){
-                if(planet.Owner() != own_planet.Owner()
-                        && viable_attack(own_planet, planet, planetWars)){
-                    possible_attacks.add(new Attack(own_planet, planet, own_planet.NumShips()-1, planetWars.Distance(own_planet.PlanetID(), planet.PlanetID())));
+        for (Planet own_planet : getPlanets(planetWars, me)) {
+            for (Planet planet : planetWars.Planets()) {
+                if (planet.Owner() != own_planet.Owner()
+                        && viable_attack(own_planet, planet, planetWars)) {
+                    possible_attacks.add(new Attack(own_planet, planet, own_planet.NumShips() - 1, planetWars.Distance(own_planet.PlanetID(), planet.PlanetID())));
                 }
             }
         }
 
+
+        System.err.println("for me " + me + " the size of possible attacks is" + possible_attacks.size());
+        if (possible_attacks.size() == 0) {
+            return new State(null, null);
+        }
         List<State> states = new ArrayList<State>();
 
-        for(Attack attack : possible_attacks){
+        for (Attack attack : possible_attacks) {
             states.add(new State(attack, planetWars));
         }
 
         float max_value = 0;
         State best_state = null;
-        for(State state : states){
+        for (State state : states) {
             float val = value_planetwars(state.planetWars, me);
-            if (val > max_value){
+            if (val > max_value) {
                 max_value = val;
                 best_state = state;
             }
@@ -73,30 +67,22 @@ public class MyBot {
         return best_state;
 
 
-
     }
 
-    public static PlanetWars attack_to_planetWars(PlanetWars startState, Attack attack){
+    public static PlanetWars attack_to_planetWars(PlanetWars startState, Attack attack) {
         PlanetWars endState = new PlanetWars(startState.gamestateString);
 
         Planet sourcePlanet = endState.GetPlanet(attack.source.PlanetID());
         Planet destinationPlanet = endState.GetPlanet(attack.destination.PlanetID());
 
-        List<Planet> planets = endState.Planets();
-        for(Planet planet : planets){
-            if( !endState.NeutralPlanets().contains(planet)) {
-                planet.NumShips(planet.NumShips() + planet.GrowthRate() * attack.turns);
-            }
-        }
 
-        if (startState.NeutralPlanets().contains(attack.destination)){
+        if (startState.NeutralPlanets().contains(attack.destination)) {
             sourcePlanet.RemoveShips(attack.amount);
             destinationPlanet.NumShips(Math.abs(destinationPlanet.NumShips() - attack.amount));
             destinationPlanet.Owner(attack.source.Owner());
-        }
-        else{
+        } else {
             sourcePlanet.RemoveShips(attack.amount);
-            destinationPlanet.NumShips(Math.abs(destinationPlanet.NumShips() - attack.amount));
+            destinationPlanet.NumShips(Math.abs(destinationPlanet.NumShips() - (attack.amount - destinationPlanet.GrowthRate() * attack.turns)));
             destinationPlanet.Owner(attack.source.Owner());
         }
 
@@ -104,7 +90,7 @@ public class MyBot {
 
     }
 
-    private static float value_planetwars(PlanetWars planetWars, boolean me){
+    private static float value_planetwars(PlanetWars planetWars, boolean me) {
         // TODO add heuristics for amount of turns for a attack
         // This will discourage the bot from picking attacks that will span a lot of turns.
         int my_ships = getShips(planetWars, me);
@@ -118,52 +104,50 @@ public class MyBot {
 
         // TODO add multipliers per heuristic.
         // By adding the multiplier, some heuristics may have a bigger impact on decision making
-        float value = my_ships/enemy_ships + my_planets/enemy_planets + my_growth/enemy_growth;
+        float value = my_ships / enemy_ships + my_planets / enemy_planets + my_growth / enemy_growth;
         return value;
     }
 
-    private static boolean viable_attack(Planet sourcePlanet, Planet destinationPlanet, PlanetWars planetWars){
+    private static boolean viable_attack(Planet sourcePlanet, Planet destinationPlanet, PlanetWars planetWars) {
         List<Planet> neutralPlanets = planetWars.NeutralPlanets();
-        if(neutralPlanets.contains(destinationPlanet) && destinationPlanet.NumShips() <sourcePlanet.NumShips()){
+        if (neutralPlanets.contains(destinationPlanet) && destinationPlanet.NumShips() < sourcePlanet.NumShips()) {
             return true;
-        }
-        else if(! neutralPlanets.contains(destinationPlanet)&&
-                destinationPlanet.NumShips() + destinationPlanet.GrowthRate() * planetWars.Distance(sourcePlanet.PlanetID(),destinationPlanet.PlanetID()) < sourcePlanet.NumShips()) {
+        } else if (!neutralPlanets.contains(destinationPlanet) &&
+                destinationPlanet.NumShips() + destinationPlanet.GrowthRate() * planetWars.Distance(sourcePlanet.PlanetID(), destinationPlanet.PlanetID()) < sourcePlanet.NumShips()) {
             return true;
 
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    private static int getGrowthRate(PlanetWars planetWars, boolean me){
+    private static int getGrowthRate(PlanetWars planetWars, boolean me) {
         List<Planet> my_planets = getPlanets(planetWars, me);
         int growth_rate = 0;
 
-        for(Planet planet : my_planets){
+        for (Planet planet : my_planets) {
             growth_rate += planet.GrowthRate();
         }
         return growth_rate;
 
     }
 
-    private static int getShips(PlanetWars planetWars, boolean me){
+    private static int getShips(PlanetWars planetWars, boolean me) {
         List<Fleet> fleets = getFleets(planetWars, me);
         List<Planet> planets = getPlanets(planetWars, me);
         int ships = 0;
-        for(Fleet fleet : fleets){
+        for (Fleet fleet : fleets) {
             ships += fleet.NumShips();
         }
 
-        for(Planet planet : planets){
+        for (Planet planet : planets) {
             ships += planet.NumShips();
         }
         return ships;
 
     }
 
-    private static List<Fleet> getFleets(PlanetWars planetWars, boolean me){
+    private static List<Fleet> getFleets(PlanetWars planetWars, boolean me) {
         List<Fleet> fleets = planetWars.Fleets();
         List<Fleet> output = new ArrayList<>();
 
@@ -171,36 +155,41 @@ public class MyBot {
         int enemynumber = planetWars.EnemyPlanets().get(0).Owner();
 
         int playernumber;
-        if (me){
+        if (me) {
             playernumber = MyNumber;
-        }
-        else{
+        } else {
             playernumber = enemynumber;
         }
 
-        for (Fleet fleet : fleets){
-            if(fleet.Owner()==playernumber){
+        for (Fleet fleet : fleets) {
+            if (fleet.Owner() == playernumber) {
                 output.add(fleet);
             }
         }
         return output;
     }
 
-    private static List<Planet> getPlanets(PlanetWars planetWars, boolean me){
+    private static List<Planet> getPlanets(PlanetWars planetWars, boolean me) {
 
-        if (me){
+        if (me) {
             return planetWars.MyPlanets();
-        }
-        else{
+        } else {
             return planetWars.EnemyPlanets();
         }
     }
 
 
+    public static void main(String[] args) {
 
-
-    public static void main(String[] args){
-
+        File file = new File("err.txt");
+        try {
+            FileOutputStream p = new FileOutputStream(file);
+            PrintStream ps = new PrintStream(p);
+            System.setErr(ps);
+            System.err.println("initializing");
+        } catch (FileNotFoundException e) {
+            // System.exit(-1);
+        }
 
         String line = "";
         String message = "";
@@ -211,11 +200,11 @@ public class MyBot {
                     case '\n':
                         if (line.equals("go")) {
                             PlanetWars pw = new PlanetWars(message);
-                            try {
+                            try{
                                 DoTurn(pw);
                             }
                             catch(Exception e){
-
+                                System.err.println(pw.gamestateString);
                             }
                             pw.FinishTurn();
                             message = "";
@@ -230,8 +219,6 @@ public class MyBot {
                 }
             }
         } catch (Exception e) {
-            //
-
 
         }
     }
