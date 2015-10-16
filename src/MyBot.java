@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class MyBot {
@@ -15,15 +19,29 @@ public class MyBot {
         // Zoek beste aanval tegenstander
         State enemy_attack = best_attack(pw, false);
 
+
+
+
         // Zoek de beste aanval met de aanname dat de beste aanval van de tegenstander gelukt is.
         State our_attack = best_attack(enemy_attack.planetWars, true);
+        File file = new File("err.txt");
+        try{
+            PrintStream p = new PrintStream(file);
+            System.setErr(p);
+            System.err.println("test");
+            System.err.println(enemy_attack.attack.source.PlanetID() + " " + enemy_attack.attack.destination.PlanetID() + " " + enemy_attack.attack.amount);
+            System.err.println(our_attack.attack.source.PlanetID() + " " + our_attack.attack.destination.PlanetID() + " " + our_attack.attack.amount);
 
-
+        }
+        catch (FileNotFoundException e){
+            System.exit(-1);
+        }
+        attack_to_turn(our_attack.attack, pw);
 
     }
 
     private static void attack_to_turn(Attack attack, PlanetWars planetWars){
-        planetWars.IssueOrder(attack.source, attack.destination, attack.amount);
+        planetWars.IssueOrder(attack.source.PlanetID(), attack.destination.PlanetID(), attack.amount);
     }
 
     private static State best_attack(PlanetWars planetWars, boolean me){
@@ -197,7 +215,7 @@ public class MyBot {
                                 DoTurn(pw);
                             }
                             catch(Exception e){
-                                System.err.print(e);
+
                             }
                             pw.FinishTurn();
                             message = "";
@@ -212,7 +230,9 @@ public class MyBot {
                 }
             }
         } catch (Exception e) {
-            // Owned.
+            //
+
+
         }
     }
 }
