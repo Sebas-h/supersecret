@@ -22,6 +22,10 @@ public class MyBot {
 
     }
 
+    private static void attack_to_turn(Attack attack, PlanetWars planetWars){
+        planetWars.IssueOrder(attack.source, attack.destination, attack.amount);
+    }
+
     private static State best_attack(PlanetWars planetWars, boolean me){
         List<Attack> possible_attacks = new ArrayList<Attack>();
         for(Planet own_planet : getPlanets(planetWars, me)){
@@ -189,7 +193,12 @@ public class MyBot {
                     case '\n':
                         if (line.equals("go")) {
                             PlanetWars pw = new PlanetWars(message);
-                            DoTurn(pw);
+                            try {
+                                DoTurn(pw);
+                            }
+                            catch(Exception e){
+                                System.err.print(e);
+                            }
                             pw.FinishTurn();
                             message = "";
                         } else {
