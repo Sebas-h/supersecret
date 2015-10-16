@@ -1,5 +1,7 @@
 import java.io.*;
+import java.lang.reflect.Method;
 import java.util.*;
+import java.util.function.Function;
 
 public class MyBot {
     // The DoTurn function is where your code goes. The PlanetWars object
@@ -13,98 +15,111 @@ public class MyBot {
     // your own. Check out the tutorials and articles on the contest website at
     // http://www.ai-contest.com/resources.
     public static void DoTurn(PlanetWars pw) {
-        // (1) If we currently have a fleet in flight, just do nothing.
-        if (pw.MyFleets().size() >= 4) {
-            return;
-        }
-        // (2) Find my strongest planet.
-        Planet source = null;
-        double sourceScore = Double.MIN_VALUE;
-        for (Planet p : pw.MyPlanets()) {
-            double score = (double) p.NumShips();
-            if (score > sourceScore) {
-                sourceScore = score;
-                source = p;
+        // Zoek beste aanval tegenstander
+        PlanetWars enemy_attack = best_attack(pw, false);
+
+        PlanetWars our_attack = best_attack(enemy_attack, true);
+
+
+
+    }
+
+    private static PlanetWars best_attack(PlanetWars planetWars, boolean me){
+        List<Attack> possible_attacks = new ArrayList<Attack>();
+        for(Planet own_planet : getPlanets(planetWars, me)){
+            for(Planet planet : planetWars.Planets()){
+                if(planet.Owner() != own_planet.Owner()
+                        && viable_attack(own_planet, planet, planetWars)){
+                    possible_attacks.add(new Attack(own_planet, planet, own_planet.NumShips()-1, planetWars.Distance(own_planet.PlanetID(), planet.PlanetID())));
+                }
             }
         }
-        // (3) Find the weakest enemy or neutral planet.
-        Planet dest = null;
-        double destScore = Double.MIN_VALUE;
-        for (Planet p : pw.NotMyPlanets()) {
-            double score = 1.0 / (1 + p.NumShips());
-            if (score > destScore) {
-                destScore = score;
-                dest = p;
+
+
+
+    }
+
+    private static PlanetWars attack_to_planetwars(PlanetWars startState, Attack attack){
+        PlanetWars endState = new PlanetWars(startState.gamestateString);
+
+        Planet sourcePlanet = endState.GetPlanet(attack.source.PlanetID());
+        Planet destinationPlanet = endState.GetPlanet(attack.destination.PlanetID());
+
+        if (startState.NeutralPlanets().contains(attack.destination)){
+            sourcePlanet.RemoveShips(attack.amount);
+            destinationPlanet.NumShips(Math.abs(destinationPlanet.NumShips() - attack.amount));
+            destinationPlanet.Owner(attack.source.Owner());
+        }
+        else{
+            sourcePlanet.RemoveShips(attack.amount);
+            destinationPlanet.NumShips(Math.abs(destinationPlanet.NumShips() + destinationPlanet.GrowthRate() * attack.turns - attack.amount));
+            destinationPlanet.Owner(attack.source.Owner());
+        }
+
+        return endState;
+
+
+
+
+
+    }
+    private static boolean viable_attack(Planet sourcePlanet, Planet destinationPlanet, PlanetWars planetWars){
+        List<Planet> neutralPlanets = planetWars.NeutralPlanets();
+        if(neutralPlanets.contains(destinationPlanet) && destinationPlanet.NumShips() <sourcePlanet.NumShips()){
+            return true;
+        }
+        else if(! neutralPlanets.contains(destinationPlanet)&&
+                destinationPlanet.NumShips() + destinationPlanet.GrowthRate() * planetWars.Distance(sourcePlanet.PlanetID(),destinationPlanet.PlanetID()) < sourcePlanet.NumShips()) {
+            return true;
+
+        }
+        else{
+            return false;
+        }
+    }
+
+    private static List<Fleet> getFleets(PlanetWars planetWars, boolean me){
+        List<Fleet> fleets = planetWars.Fleets();
+        List<Fleet> output = new ArrayList<>();
+
+        int MyNumber = planetWars.MyPlanets().get(0).Owner();
+        int enemynumber = planetWars.EnemyPlanets().get(0).Owner();
+
+        int playernumber;
+        if (me){
+            playernumber = MyNumber;
+        }
+        else{
+            playernumber = enemynumber;
+        }
+
+        for (Fleet fleet : fleets){
+            if(fleet.Owner()==playernumber){
+                output.add(fleet);
             }
         }
-        // (4) Send half the ships from my strongest planet to the weakest
-        // planet that I do not own.
-        if (source != null && dest != null) {
-            int numShips = source.NumShips() / 2;
-            pw.IssueOrder(source, dest, numShips);
+        return output;
+    }
+
+    private static List<Planet> getPlanets(PlanetWars planetWars, boolean me){
+
+        if (me){
+            return planetWars.MyPlanets();
+        }
+        else{
+            return planetWars.EnemyPlanets();
         }
     }
 
-    /* PSEUDO CODE
-    Breadth first zoeken naar nodes
-    elke node krijgt een waarde toegekent op basis van de eigen growth rate ten opzichte van die van de tegenstander (misschien het aantal schepen ook meenemen)
-    zoeken tot een bepaalde diepte bereikt is
-    de node met de beste waarde wordt gekozen.
-
-    functie:
-    params: startnode
-    nodeList = [startNode]
-
-
-    while nodeList is not empty{
-
-    }
-
-     */
-
-
-    public class Node{
-        public PlanetWars gamestate;
-
-
-        public Node(PlanetWars planetWars){
-            gamestate = planetWars;
-        }
-
-
-        public ArrayList<Node> collapse() {
-            ArrayList<Node> output = new ArrayList<Node>();
-            PlanetWars newstate = new PlanetWars(this.gamestate.gamestateString);
-
-            // For all neutral or hostile planets
-            for (Planet planet : this.gamestate.NotMyPlanets()) {
-
-                newstate = new PlanetWars(gamestate.gamestateString);
-            }
-            output.add(new Node(newstate));
-            return output;
-        }
-
-    }
-
-    public void minimax(Node startNode){
-        ArrayList<Node> nodes = new ArrayList<Node>();
-        nodes.add(startNode);
-        while (nodes.size() > 0)
-        {
-            // Collapse node
-            // dismiss negative nodes
-            // simulate opponents reaction
-            // add viable states to the nodes array
-        }
 
 
 
-    }
 
 
 
     public static void main(String[] args){
+
+
         String line = "";
         String message = "";
         int c;
