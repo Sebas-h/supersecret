@@ -9,12 +9,15 @@ public class Bot{
     int playerID;
     PlanetWars planetWars;
 
+
     public Bot(PlanetWars planetWars, int ID){
         this.planetWars = planetWars;
         playerID = ID;
     }
 
-    private List<Attack> get_all_attacks(){
+
+
+    public List<Attack> get_all_attacks(){
         List<Attack> attacks = new ArrayList<>();
 
         for(Planet my_planet : getPlanets()){
