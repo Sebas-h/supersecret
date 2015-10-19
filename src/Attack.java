@@ -4,6 +4,7 @@ public class Attack{
         source = sourcePlanet;
         destination = destinationPlanet;
         amount = numberOfShips;
+
         this.turns = turns;
     }
 

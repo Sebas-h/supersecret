@@ -6,8 +6,13 @@ public class State {
 
     public State(Attack attack, PlanetWars startState){
         this.attack = attack;
-        this.planetWars = MyBot.attack_to_planetWars(startState, attack);
+        if (attack!=null){
+            this.planetWars = MyBot.attack_to_planetWars(startState, attack);
 
+        }
+        else{
+            this.attack = null;
+        }
     }
 
     public Attack attack;
