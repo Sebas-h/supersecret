@@ -38,11 +38,13 @@ public class Bot{
     private boolean isValidAttack(Planet source, Planet destination){
         List<Planet> neutralPlanets = planetWars.NeutralPlanets();
 
-        if (neutralPlanets.contains(destination) && destination.NumShips() < source.NumShips()) {
+       if (neutralPlanets.contains(destination) && destination.NumShips() < source.NumShips() && !fleet_already_sent(destination)) {
             return true;
         }
         else if (!neutralPlanets.contains(destination) &&
-                destination.NumShips() + destination.GrowthRate() * planetWars.Distance(source.PlanetID(), destination.PlanetID()) < source.NumShips()) {
+                destination.NumShips() + destination.GrowthRate() * planetWars.Distance(source.PlanetID(), destination.PlanetID()) < source.NumShips()
+               &&
+               !fleet_already_sent(destination)) {
             return true;
 
         }
@@ -52,6 +54,24 @@ public class Bot{
 
 
 
+    }
+
+    public Attack get_best_attack(){
+        Attack best_attack;
+        Float value;
+        List<Attack> attacks = get_all_attacks();
+
+    }
+
+
+    private boolean fleet_already_sent(Planet destination){
+        List<Fleet> fleets = planetWars.Fleets();
+        for(Fleet fleet : fleets){
+            if(fleet.DestinationPlanet() == destination.PlanetID() && fleet.Owner() == playerID){
+                return true;
+            }
+        }
+        return false;
     }
 
 

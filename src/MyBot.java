@@ -17,7 +17,8 @@ public class MyBot {
         enemy.planetWars = pw;
 
         Simulation sim = new Simulation(me, enemy, pw);
-        Attack best_attack = sim.run();
+        Attack best_attack;
+        sim.run();
 
         pw.IssueOrder(best_attack.source, best_attack.destination, best_attack.amount);
 

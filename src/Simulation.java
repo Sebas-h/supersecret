@@ -16,12 +16,46 @@ public class Simulation {
         this.planetWars = planetWars;
     }
 
-    public Attack run(){
-        for(Attack my_attack : player1.get_all_attacks()){
-            for(Attack enemy_attack : player2.get_all_attacks()){
-                simulate()
-            }
-        }
+    public void run(){
+
+
+
+
     }
+
+
+
+    private SimulationResult simulate(Attack my_attack, Attack enemy_attack){
+        // Make new planetwars object.
+        PlanetWars pw = new PlanetWars(planetWars.gamestateString);
+
+        int turns;
+        // Get longest attack
+        if (my_attack.turns > enemy_attack.turns){
+            turns = my_attack.turns;
+        }
+        else{
+            turns = enemy_attack.turns;
+        }
+        // make fleets
+        pw.depart(my_attack, enemy_attack);
+        for(int i = 0; i<turns; i++){
+            // simulate turns
+            simulate_one_turn(pw);
+        }
+        // return result
+        return new SimulationResult(my_attack, enemy_attack, pw.value_myself());
+
+    }
+
+    private void simulate_one_turn(PlanetWars pw){
+        //advancement
+        pw.advance();
+        //arrival
+        pw.arrival();
+    }
+
+
+
 
 }

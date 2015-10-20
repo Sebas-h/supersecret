@@ -13,7 +13,7 @@ public class PlanetWars {
         planets = new ArrayList<Planet>();
         fleets = new ArrayList<Fleet>();
         ParseGameState(gameStateString);
-		gamestateString = gameStateString;
+        gamestateString = gameStateString;
     }
 
     public String gamestateString;
@@ -56,6 +56,114 @@ public class PlanetWars {
             }
         }
         return r;
+    }
+
+    public void advance() {
+        // decrement turns remaining for all fleets
+        fleets.forEach(fleet -> fleet.TimeStep());
+        // apply growth rate to all non-neutral planets
+        planets.forEach(planet -> {
+            if (!NeutralPlanets().contains(planet)) {
+                planet.NumShips(planet.NumShips() + planet.GrowthRate());
+            }
+        });
+
+    }
+
+    public void arrival(){
+        List<Fleet> fleets = new ArrayList<>();
+        Fleets().forEach(fleet -> {
+            if (fleet.TurnsRemaining() == 0) {
+                fleets.add(fleet);
+            }
+        });
+
+
+        fleets.forEach(fleet -> {
+            Planet dest = GetPlanet(fleet.DestinationPlanet());
+            if(fleet.Owner()!= dest.Owner()){
+                dest.NumShips(dest.NumShips() - fleet.NumShips());
+                if(dest.NumShips()<0){
+                    dest.Owner(fleet.Owner());
+                    dest.NumShips( Math.abs( dest.NumShips() ));
+                }
+
+            }
+            else{
+                dest.NumShips(dest.NumShips() + fleet.NumShips());
+            }
+        });
+    }
+
+    public Float value_myself(Bot bot){
+
+        bot.
+        // TODO add heuristics for amount of turns for a attack
+        // This will discourage the bot from picking attacks that will span a lot of turns.
+        int my_ships = getShips(planetWars, me);
+        int enemy_ships = getShips(planetWars, !me);
+
+        int my_planets = getPlanets(planetWars, me).size();
+        int enemy_planets = getPlanets(planetWars, !me).size();
+
+        int my_growth = getGrowthRate(planetWars, me);
+        int enemy_growth = getGrowthRate(planetWars, me);
+
+        // TODO add multipliers per heuristic.
+        // By adding the multiplier, some heuristics may have a bigger impact on decision making
+        float ship_value;
+
+        float planet_value;
+        float growth_value;
+
+
+        if (enemy_planets > 0){
+            planet_value = my_planets / enemy_planets;
+            growth_value = my_growth/ enemy_growth;
+            ship_value = my_ships / enemy_ships;
+
+        }
+        else{
+
+            planet_value = my_planets;
+            growth_value = my_growth;
+            ship_value = my_ships;
+        }
+        float value = ship_value + planet_value + growth_value;
+
+
+
+        return value;
+    }
+
+
+
+    public void depart( Attack my_attack, Attack enemy_attack) {
+        // Make 2 fleets
+        Fleet my_fleet = new Fleet(my_attack.source.Owner(),
+                my_attack.amount, my_attack.source.PlanetID(),
+                my_attack.destination.PlanetID(),
+                my_attack.turns,
+                my_attack.turns);
+
+        Fleet enemy_fleet = new Fleet(enemy_attack.source.Owner(),
+                enemy_attack.amount, enemy_attack.source.PlanetID(),
+                enemy_attack.destination.PlanetID(),
+                enemy_attack.turns,
+                enemy_attack.turns);
+        // add them to the Fleets list
+        Fleets().add(my_fleet);
+        Fleets().add(enemy_fleet);
+
+        // get the affected planets
+        Planet my_source = GetPlanet(my_attack.source.PlanetID());
+        Planet enemy_source = GetPlanet(enemy_attack.source.PlanetID());
+
+        // remove the ships added to the fleets
+        my_source.NumShips(my_source.NumShips() - my_attack.amount);
+        enemy_source.NumShips(enemy_source.NumShips() - enemy_attack.amount);
+
+
     }
 
     // Return a list of all neutral planets.
