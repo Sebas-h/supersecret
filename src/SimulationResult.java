@@ -3,15 +3,19 @@
  */
 public class SimulationResult {
 
-    public Attack our_attack;
+    public Attack attack;
 
-    public Attack enemy_attack;
 
     public Float score;
 
-    public SimulationResult(Attack our_attack, Attack enemy_attack, Float score){
-        this.our_attack = our_attack;
-        this.enemy_attack = enemy_attack;
+    public SimulationResult(Attack attack, Float score){
+        this.attack = attack;
         this.score = score;
+    }
+
+
+    public int compare(Float f1, Float f2){
+        return Float.compare(f1, f2);
+
     }
 }

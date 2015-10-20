@@ -95,19 +95,33 @@ public class PlanetWars {
         });
     }
 
-    public Float value_myself(Bot bot){
+    public Float value_myself(int playerID){
 
-        bot.
-        // TODO add heuristics for amount of turns for a attack
-        // This will discourage the bot from picking attacks that will span a lot of turns.
-        int my_ships = getShips(planetWars, me);
-        int enemy_ships = getShips(planetWars, !me);
+        int otherID;
+        if (playerID == 1){
+            otherID = 2;
+        }
+        else{
+            otherID = 1;
+        }
+        Bot bot = new Bot(this, playerID);
+        Bot otherbot = new Bot(this, otherID);
 
-        int my_planets = getPlanets(planetWars, me).size();
-        int enemy_planets = getPlanets(planetWars, !me).size();
+        int my_planets = bot.getPlanets().size();
+        int enemy_planets = otherbot.getPlanets().size();
 
-        int my_growth = getGrowthRate(planetWars, me);
-        int enemy_growth = getGrowthRate(planetWars, me);
+        int my_growth = 0;
+        for (Planet planet : bot.getPlanets()){
+            my_growth += planet.GrowthRate();
+        }
+
+        int enemy_growth = 0;
+        for(Planet planet : otherbot.getPlanets()){
+            enemy_growth += planet.GrowthRate();
+        }
+
+        int my_ships = bot.getShips();
+        int enemy_ships = otherbot.getShips();
 
         // TODO add multipliers per heuristic.
         // By adding the multiplier, some heuristics may have a bigger impact on decision making
@@ -130,38 +144,28 @@ public class PlanetWars {
             ship_value = my_ships;
         }
         float value = ship_value + planet_value + growth_value;
-
-
-
         return value;
     }
 
 
 
-    public void depart( Attack my_attack, Attack enemy_attack) {
-        // Make 2 fleets
-        Fleet my_fleet = new Fleet(my_attack.source.Owner(),
-                my_attack.amount, my_attack.source.PlanetID(),
-                my_attack.destination.PlanetID(),
-                my_attack.turns,
-                my_attack.turns);
+    public void depart( Attack attack) {
+        // Make a fleet
+        Fleet fleet = new Fleet(attack.source.Owner(),
+                attack.amount, attack.source.PlanetID(),
+                attack.destination.PlanetID(),
+                attack.turns,
+                attack.turns);
 
-        Fleet enemy_fleet = new Fleet(enemy_attack.source.Owner(),
-                enemy_attack.amount, enemy_attack.source.PlanetID(),
-                enemy_attack.destination.PlanetID(),
-                enemy_attack.turns,
-                enemy_attack.turns);
-        // add them to the Fleets list
-        Fleets().add(my_fleet);
-        Fleets().add(enemy_fleet);
+
+        // add it to the Fleets list
+        Fleets().add(fleet);
 
         // get the affected planets
-        Planet my_source = GetPlanet(my_attack.source.PlanetID());
-        Planet enemy_source = GetPlanet(enemy_attack.source.PlanetID());
+        Planet my_source = GetPlanet(attack.source.PlanetID());
 
-        // remove the ships added to the fleets
-        my_source.NumShips(my_source.NumShips() - my_attack.amount);
-        enemy_source.NumShips(enemy_source.NumShips() - enemy_attack.amount);
+        // remove the ships added to the fleet
+        my_source.NumShips(my_source.NumShips() - attack.amount);
 
 
     }

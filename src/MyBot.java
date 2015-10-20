@@ -16,58 +16,32 @@ public class MyBot {
         me.planetWars = pw;
         enemy.planetWars = pw;
 
-        Simulation sim = new Simulation(me, enemy, pw);
-        Attack best_attack;
-        sim.run();
+        Attack best_enemy_attack = enemy.get_best_attack();
 
-        pw.IssueOrder(best_attack.source, best_attack.destination, best_attack.amount);
+
+        List<Attack> my_attacks = me.get_all_attacks();
+        System.err.println(my_attacks.size() + " possible attacks this turn");
+
+
+        if (my_attacks.size() > 0) {
+            Attack best_attack = new Attack(null, null, 0, 0);
+            float val = 0;
+
+            for (Attack attack : my_attacks) {
+                Simulation sim = new Simulation(pw);
+                float simresult = sim.simulate(attack,best_enemy_attack);
+                if (simresult > val) {
+                    best_attack = attack;
+                    val = simresult;
+                }
+            }
+            if(best_attack.source != null){
+                pw.IssueOrder(best_attack.source, best_attack.destination, best_attack.amount);
+            }
+        }
 
 
     }
-
-
-
-
-    private static float value_planetwars(PlanetWars planetWars, boolean me) {
-        // TODO add heuristics for amount of turns for a attack
-        // This will discourage the bot from picking attacks that will span a lot of turns.
-        int my_ships = getShips(planetWars, me);
-        int enemy_ships = getShips(planetWars, !me);
-
-        int my_planets = getPlanets(planetWars, me).size();
-        int enemy_planets = getPlanets(planetWars, !me).size();
-
-        int my_growth = getGrowthRate(planetWars, me);
-        int enemy_growth = getGrowthRate(planetWars, me);
-
-        // TODO add multipliers per heuristic.
-        // By adding the multiplier, some heuristics may have a bigger impact on decision making
-        float ship_value;
-
-        float planet_value;
-        float growth_value;
-
-
-        if (enemy_planets > 0){
-            planet_value = my_planets / enemy_planets;
-            growth_value = my_growth/ enemy_growth;
-            ship_value = my_ships / enemy_ships;
-
-        }
-        else{
-
-            planet_value = my_planets;
-            growth_value = my_growth;
-            ship_value = my_ships;
-        }
-        float value = ship_value + planet_value + growth_value;
-
-
-
-        return value;
-    }
-
-
 
 
     public static void main(String[] args) {
@@ -81,7 +55,7 @@ public class MyBot {
         } catch (FileNotFoundException e) {
             // System.exit(-1);
         }
-        int turn= 1;
+        int turn = 1;
 
         Bot ourBot = new Bot(null, 1);
         Bot enemyBot = new Bot(null, 2);
@@ -95,11 +69,10 @@ public class MyBot {
                     case '\n':
                         if (line.equals("go")) {
                             PlanetWars pw = new PlanetWars(message);
-                            System.err.println("\nturn " + turn+ " :");
-                            try{
+                            System.err.println("\nturn " + turn + " :");
+                            try {
                                 DoTurn(pw, ourBot, enemyBot);
-                            }
-                            catch(Exception e){
+                            } catch (Exception e) {
                                 System.err.println(pw.gamestateString);
                                 System.err.println("caught exception");
                                 e.printStackTrace(System.err);

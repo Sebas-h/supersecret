@@ -3,31 +3,26 @@
  */
 public class Simulation {
 
-    private Bot player1;
-
-    private Bot player2;
 
     private PlanetWars planetWars;
 
 
-    public Simulation(Bot player1, Bot player2, PlanetWars planetWars){
-        this.player1 = player1;
-        this.player2 = player2;
-        this.planetWars = planetWars;
+    public Simulation(PlanetWars planetWars){
+
+        this.planetWars = new PlanetWars(planetWars.gamestateString);
     }
 
-    public void run(){
+    public PlanetWars simulate_one(Attack attack){
+        planetWars.depart(attack);
 
-
-
-
+        for(int i = 0; i < attack.turns; i ++){
+            simulate_one_turn();
+        }
+        return planetWars;
     }
 
-
-
-    private SimulationResult simulate(Attack my_attack, Attack enemy_attack){
+    public Float simulate(Attack my_attack, Attack enemy_attack){
         // Make new planetwars object.
-        PlanetWars pw = new PlanetWars(planetWars.gamestateString);
 
         int turns;
         // Get longest attack
@@ -38,21 +33,25 @@ public class Simulation {
             turns = enemy_attack.turns;
         }
         // make fleets
-        pw.depart(my_attack, enemy_attack);
+        planetWars.depart(my_attack);
+        if(enemy_attack.source!= null){
+            planetWars.depart(enemy_attack);
+        }
+
         for(int i = 0; i<turns; i++){
             // simulate turns
-            simulate_one_turn(pw);
+            simulate_one_turn();
         }
         // return result
-        return new SimulationResult(my_attack, enemy_attack, pw.value_myself());
+        return planetWars.value_myself(1);
 
     }
 
-    private void simulate_one_turn(PlanetWars pw){
+    private void simulate_one_turn(){
         //advancement
-        pw.advance();
+        planetWars.advance();
         //arrival
-        pw.arrival();
+        planetWars.arrival();
     }
 
 

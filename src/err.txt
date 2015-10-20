@@ -1,1085 +1,340 @@
 initializing
 
 turn 1 :
-for me false the size of possible attacks is20
-for me true the size of possible attacks is20
+21 possible attacks this turn
 
 turn 2 :
-for me false the size of possible attacks is14
-for me true the size of possible attacks is20
+19 possible attacks this turn
 
 turn 3 :
-for me false the size of possible attacks is8
-for me true the size of possible attacks is20
+10 possible attacks this turn
 
 turn 4 :
-for me false the size of possible attacks is6
-for me true the size of possible attacks is20
+9 possible attacks this turn
 
 turn 5 :
-for me false the size of possible attacks is6
-for me true the size of possible attacks is20
+4 possible attacks this turn
 
 turn 6 :
-for me false the size of possible attacks is2
-for me true the size of possible attacks is20
+2 possible attacks this turn
 
 turn 7 :
-for me false the size of possible attacks is6
-for me true the size of possible attacks is20
+0 possible attacks this turn
 
 turn 8 :
-for me false the size of possible attacks is6
-for me true the size of possible attacks is20
+0 possible attacks this turn
 
 turn 9 :
-for me false the size of possible attacks is6
-for me true the size of possible attacks is20
+2 possible attacks this turn
 
 turn 10 :
-for me false the size of possible attacks is8
-for me true the size of possible attacks is20
+0 possible attacks this turn
 
 turn 11 :
-for me false the size of possible attacks is8
-for me true the size of possible attacks is20
+0 possible attacks this turn
 
 turn 12 :
-for me false the size of possible attacks is8
-for me true the size of possible attacks is20
+0 possible attacks this turn
 
 turn 13 :
-for me false the size of possible attacks is12
-for me true the size of possible attacks is20
+1 possible attacks this turn
 
 turn 14 :
-for me false the size of possible attacks is14
-for me true the size of possible attacks is21
+0 possible attacks this turn
 
 turn 15 :
-for me false the size of possible attacks is14
-for me true the size of possible attacks is21
+0 possible attacks this turn
 
 turn 16 :
-for me false the size of possible attacks is16
-for me true the size of possible attacks is21
+0 possible attacks this turn
 
 turn 17 :
-for me false the size of possible attacks is22
-for me true the size of possible attacks is21
+0 possible attacks this turn
 
 turn 18 :
-for me false the size of possible attacks is30
-for me true the size of possible attacks is19
+2 possible attacks this turn
 
 turn 19 :
-for me false the size of possible attacks is36
-for me true the size of possible attacks is19
+1 possible attacks this turn
 
 turn 20 :
-for me false the size of possible attacks is38
-for me true the size of possible attacks is19
+0 possible attacks this turn
 
 turn 21 :
-for me false the size of possible attacks is38
-for me true the size of possible attacks is19
+0 possible attacks this turn
 
 turn 22 :
-for me false the size of possible attacks is34
-for me true the size of possible attacks is19
+0 possible attacks this turn
 
 turn 23 :
-for me false the size of possible attacks is34
-for me true the size of possible attacks is19
+0 possible attacks this turn
 
 turn 24 :
-for me false the size of possible attacks is34
-for me true the size of possible attacks is19
+2 possible attacks this turn
 
 turn 25 :
-for me false the size of possible attacks is36
-for me true the size of possible attacks is19
+0 possible attacks this turn
 
 turn 26 :
-for me false the size of possible attacks is38
-for me true the size of possible attacks is20
+0 possible attacks this turn
 
 turn 27 :
-for me false the size of possible attacks is38
-for me true the size of possible attacks is20
+3 possible attacks this turn
 
 turn 28 :
-for me false the size of possible attacks is38
-for me true the size of possible attacks is20
+0 possible attacks this turn
 
 turn 29 :
-for me false the size of possible attacks is39
-for me true the size of possible attacks is0
+2 possible attacks this turn
 
 turn 30 :
-for me false the size of possible attacks is39
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 31 :
-for me false the size of possible attacks is40
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 32 :
-for me false the size of possible attacks is40
-for me true the size of possible attacks is4
+0 possible attacks this turn
 
 turn 33 :
-for me false the size of possible attacks is40
-for me true the size of possible attacks is4
+0 possible attacks this turn
 
 turn 34 :
-for me false the size of possible attacks is39
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 35 :
-for me false the size of possible attacks is39
-for me true the size of possible attacks is2
+1 possible attacks this turn
 
 turn 36 :
-for me false the size of possible attacks is40
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 37 :
-for me false the size of possible attacks is40
-for me true the size of possible attacks is2
+0 possible attacks this turn
 
 turn 38 :
-for me false the size of possible attacks is51
-for me true the size of possible attacks is0
+4 possible attacks this turn
 
 turn 39 :
-for me false the size of possible attacks is50
-for me true the size of possible attacks is0
+3 possible attacks this turn
 
 turn 40 :
-for me false the size of possible attacks is52
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 41 :
-for me false the size of possible attacks is52
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 42 :
-for me false the size of possible attacks is52
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 43 :
-for me false the size of possible attacks is52
-for me true the size of possible attacks is0
+1 possible attacks this turn
 
 turn 44 :
-for me false the size of possible attacks is59
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 45 :
-for me false the size of possible attacks is59
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 46 :
-for me false the size of possible attacks is59
-for me true the size of possible attacks is1
+0 possible attacks this turn
 
 turn 47 :
-for me false the size of possible attacks is59
-for me true the size of possible attacks is0
+2 possible attacks this turn
 
 turn 48 :
-for me false the size of possible attacks is59
-for me true the size of possible attacks is1
+0 possible attacks this turn
 
 turn 49 :
-for me false the size of possible attacks is59
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 50 :
-for me false the size of possible attacks is59
-for me true the size of possible attacks is4
+2 possible attacks this turn
 
 turn 51 :
-for me false the size of possible attacks is59
-for me true the size of possible attacks is3
+3 possible attacks this turn
 
 turn 52 :
-for me false the size of possible attacks is60
-for me true the size of possible attacks is1
+0 possible attacks this turn
 
 turn 53 :
-for me false the size of possible attacks is60
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 54 :
-for me false the size of possible attacks is60
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 55 :
-for me false the size of possible attacks is57
-for me true the size of possible attacks is3
+0 possible attacks this turn
 
 turn 56 :
-for me false the size of possible attacks is57
-for me true the size of possible attacks is2
+1 possible attacks this turn
 
 turn 57 :
-for me false the size of possible attacks is57
-for me true the size of possible attacks is0
+2 possible attacks this turn
 
 turn 58 :
-for me false the size of possible attacks is58
-for me true the size of possible attacks is0
+1 possible attacks this turn
 
 turn 59 :
-for me false the size of possible attacks is58
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 60 :
-for me false the size of possible attacks is58
-for me true the size of possible attacks is1
+3 possible attacks this turn
 
 turn 61 :
-for me false the size of possible attacks is67
-for me true the size of possible attacks is1
+0 possible attacks this turn
 
 turn 62 :
-for me false the size of possible attacks is69
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 63 :
-for me false the size of possible attacks is69
-for me true the size of possible attacks is1
+0 possible attacks this turn
 
 turn 64 :
-for me false the size of possible attacks is69
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 65 :
-for me false the size of possible attacks is67
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 66 :
-for me false the size of possible attacks is69
-for me true the size of possible attacks is1
+1 possible attacks this turn
 
 turn 67 :
-for me false the size of possible attacks is71
-for me true the size of possible attacks is1
+0 possible attacks this turn
 
 turn 68 :
-for me false the size of possible attacks is73
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 69 :
-for me false the size of possible attacks is73
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 70 :
-for me false the size of possible attacks is73
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 71 :
-for me false the size of possible attacks is73
-for me true the size of possible attacks is1
+0 possible attacks this turn
 
 turn 72 :
-for me false the size of possible attacks is74
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 73 :
-for me false the size of possible attacks is74
-for me true the size of possible attacks is1
+0 possible attacks this turn
 
 turn 74 :
-for me false the size of possible attacks is74
-for me true the size of possible attacks is0
+1 possible attacks this turn
 
 turn 75 :
-for me false the size of possible attacks is76
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 76 :
-for me false the size of possible attacks is78
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 77 :
-for me false the size of possible attacks is80
-for me true the size of possible attacks is0
+6 possible attacks this turn
 
 turn 78 :
-for me false the size of possible attacks is80
-for me true the size of possible attacks is0
+2 possible attacks this turn
 
 turn 79 :
-for me false the size of possible attacks is80
-for me true the size of possible attacks is1
+1 possible attacks this turn
 
 turn 80 :
-for me false the size of possible attacks is81
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 81 :
-for me false the size of possible attacks is81
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 82 :
-for me false the size of possible attacks is81
-for me true the size of possible attacks is0
+9 possible attacks this turn
 
 turn 83 :
-for me false the size of possible attacks is83
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 84 :
-for me false the size of possible attacks is94
-for me true the size of possible attacks is0
+2 possible attacks this turn
 
 turn 85 :
-for me false the size of possible attacks is93
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 86 :
-for me false the size of possible attacks is93
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 87 :
-for me false the size of possible attacks is93
-for me true the size of possible attacks is0
+9 possible attacks this turn
 
 turn 88 :
-for me false the size of possible attacks is93
-for me true the size of possible attacks is2
+8 possible attacks this turn
 
 turn 89 :
-for me false the size of possible attacks is93
-for me true the size of possible attacks is0
+7 possible attacks this turn
 
 turn 90 :
-for me false the size of possible attacks is93
-for me true the size of possible attacks is0
+2 possible attacks this turn
 
 turn 91 :
-for me false the size of possible attacks is95
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 92 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 93 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is2
+0 possible attacks this turn
 
 turn 94 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 95 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is2
+0 possible attacks this turn
 
 turn 96 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 97 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 98 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 99 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is2
+16 possible attacks this turn
 
 turn 100 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 101 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 102 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is0
+21 possible attacks this turn
 
 turn 103 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 104 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 105 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 106 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is1
+0 possible attacks this turn
 
 turn 107 :
-for me false the size of possible attacks is106
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 108 :
-for me false the size of possible attacks is105
-for me true the size of possible attacks is19
+0 possible attacks this turn
 
 turn 109 :
-for me false the size of possible attacks is110
-for me true the size of possible attacks is11
+0 possible attacks this turn
 
 turn 110 :
-for me false the size of possible attacks is111
-for me true the size of possible attacks is7
+0 possible attacks this turn
 
 turn 111 :
-for me false the size of possible attacks is110
-for me true the size of possible attacks is0
+0 possible attacks this turn
 
 turn 112 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is1
+0 possible attacks this turn
 
 turn 113 :
-for me false the size of possible attacks is120
-for me true the size of possible attacks is0
-
-turn 114 :
-for me false the size of possible attacks is113
-for me true the size of possible attacks is0
-
-turn 115 :
-for me false the size of possible attacks is113
-for me true the size of possible attacks is0
-
-turn 116 :
-for me false the size of possible attacks is113
-for me true the size of possible attacks is0
-
-turn 117 :
-for me false the size of possible attacks is113
-for me true the size of possible attacks is0
-
-turn 118 :
-for me false the size of possible attacks is113
-for me true the size of possible attacks is0
-
-turn 119 :
-for me false the size of possible attacks is113
-for me true the size of possible attacks is0
-
-turn 120 :
-for me false the size of possible attacks is113
-for me true the size of possible attacks is0
-
-turn 121 :
-for me false the size of possible attacks is114
-for me true the size of possible attacks is8
-
-turn 122 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is5
-
-turn 123 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 124 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 125 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 126 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 127 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 128 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 129 :
-for me false the size of possible attacks is124
-for me true the size of possible attacks is0
-
-turn 130 :
-for me false the size of possible attacks is120
-for me true the size of possible attacks is0
-
-turn 131 :
-for me false the size of possible attacks is120
-for me true the size of possible attacks is0
-
-turn 132 :
-for me false the size of possible attacks is120
-for me true the size of possible attacks is0
-
-turn 133 :
-for me false the size of possible attacks is120
-for me true the size of possible attacks is0
-
-turn 134 :
-for me false the size of possible attacks is120
-for me true the size of possible attacks is0
-
-turn 135 :
-for me false the size of possible attacks is121
-for me true the size of possible attacks is0
-
-turn 136 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is12
-
-turn 137 :
-for me false the size of possible attacks is120
-for me true the size of possible attacks is0
-
-turn 138 :
-for me false the size of possible attacks is120
-for me true the size of possible attacks is0
-
-turn 139 :
-for me false the size of possible attacks is122
-for me true the size of possible attacks is0
-
-turn 140 :
-for me false the size of possible attacks is122
-for me true the size of possible attacks is0
-
-turn 141 :
-for me false the size of possible attacks is124
-for me true the size of possible attacks is2
-
-turn 142 :
-for me false the size of possible attacks is124
-for me true the size of possible attacks is0
-
-turn 143 :
-for me false the size of possible attacks is123
-for me true the size of possible attacks is0
-
-turn 144 :
-for me false the size of possible attacks is123
-for me true the size of possible attacks is2
-
-turn 145 :
-for me false the size of possible attacks is121
-for me true the size of possible attacks is0
-
-turn 146 :
-for me false the size of possible attacks is115
-for me true the size of possible attacks is0
-
-turn 147 :
-for me false the size of possible attacks is115
-for me true the size of possible attacks is0
-
-turn 148 :
-for me false the size of possible attacks is117
-for me true the size of possible attacks is0
-
-turn 149 :
-for me false the size of possible attacks is117
-for me true the size of possible attacks is1
-
-turn 150 :
-for me false the size of possible attacks is121
-for me true the size of possible attacks is0
-
-turn 151 :
-for me false the size of possible attacks is120
-for me true the size of possible attacks is3
-
-turn 152 :
-for me false the size of possible attacks is123
-for me true the size of possible attacks is0
-
-turn 153 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 154 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 155 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 156 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 157 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 158 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is2
-
-turn 159 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 160 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 161 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 162 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 163 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is1
-
-turn 164 :
-for me false the size of possible attacks is126
-for me true the size of possible attacks is0
-
-turn 165 :
-for me false the size of possible attacks is126
-for me true the size of possible attacks is0
-
-turn 166 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 167 :
-for me false the size of possible attacks is124
-for me true the size of possible attacks is0
-
-turn 168 :
-for me false the size of possible attacks is115
-for me true the size of possible attacks is0
-
-turn 169 :
-for me false the size of possible attacks is115
-for me true the size of possible attacks is0
-
-turn 170 :
-for me false the size of possible attacks is115
-for me true the size of possible attacks is0
-
-turn 171 :
-for me false the size of possible attacks is116
-for me true the size of possible attacks is1
-
-turn 172 :
-for me false the size of possible attacks is116
-for me true the size of possible attacks is1
-
-turn 173 :
-for me false the size of possible attacks is117
-for me true the size of possible attacks is1
-
-turn 174 :
-for me false the size of possible attacks is117
-for me true the size of possible attacks is0
-
-turn 175 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is4
-
-turn 176 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is2
-
-turn 177 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is0
-
-turn 178 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is1
-
-turn 179 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is1
-
-turn 180 :
-for me false the size of possible attacks is120
-for me true the size of possible attacks is1
-
-turn 181 :
-for me false the size of possible attacks is124
-for me true the size of possible attacks is0
-
-turn 182 :
-for me false the size of possible attacks is123
-for me true the size of possible attacks is0
-
-turn 183 :
-for me false the size of possible attacks is122
-for me true the size of possible attacks is0
-
-turn 184 :
-for me false the size of possible attacks is122
-for me true the size of possible attacks is0
-
-turn 185 :
-for me false the size of possible attacks is122
-for me true the size of possible attacks is0
-
-turn 186 :
-for me false the size of possible attacks is122
-for me true the size of possible attacks is0
-
-turn 187 :
-for me false the size of possible attacks is122
-for me true the size of possible attacks is0
-
-turn 188 :
-for me false the size of possible attacks is122
-for me true the size of possible attacks is0
-
-turn 189 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 190 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 191 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 192 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 193 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 194 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 195 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is1
-
-turn 196 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is0
-
-turn 197 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is2
-
-turn 198 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is0
-
-turn 199 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is0
-
-turn 200 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is0
-
-turn 201 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is0
-
-turn 202 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is2
-
-turn 203 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 204 :
-for me false the size of possible attacks is113
-for me true the size of possible attacks is0
-
-turn 205 :
-for me false the size of possible attacks is112
-for me true the size of possible attacks is19
-
-turn 206 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 207 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 208 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 209 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 210 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 211 :
-for me false the size of possible attacks is125
-for me true the size of possible attacks is0
-
-turn 212 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is0
-
-turn 213 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is0
-
-turn 214 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is0
-
-turn 215 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is0
-
-turn 216 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is6
-
-turn 217 :
-for me false the size of possible attacks is119
-for me true the size of possible attacks is0
-
-turn 218 :
-for me false the size of possible attacks is111
-for me true the size of possible attacks is0
-
-turn 219 :
-for me false the size of possible attacks is112
-for me true the size of possible attacks is1
-
-turn 220 :
-for me false the size of possible attacks is114
-for me true the size of possible attacks is0
-
-turn 221 :
-for me false the size of possible attacks is114
-for me true the size of possible attacks is0
-
-turn 222 :
-for me false the size of possible attacks is114
-for me true the size of possible attacks is0
-
-turn 223 :
-for me false the size of possible attacks is116
-for me true the size of possible attacks is0
-
-turn 224 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 225 :
-for me false the size of possible attacks is118
-for me true the size of possible attacks is0
-
-turn 226 :
-for me false the size of possible attacks is109
-for me true the size of possible attacks is1
-
-turn 227 :
-for me false the size of possible attacks is109
-for me true the size of possible attacks is0
-
-turn 228 :
-for me false the size of possible attacks is109
-for me true the size of possible attacks is0
-
-turn 229 :
-for me false the size of possible attacks is109
-for me true the size of possible attacks is0
-
-turn 230 :
-for me false the size of possible attacks is109
-for me true the size of possible attacks is0
-
-turn 231 :
-for me false the size of possible attacks is109
-for me true the size of possible attacks is0
-
-turn 232 :
-for me false the size of possible attacks is109
-for me true the size of possible attacks is0
-
-turn 233 :
-for me false the size of possible attacks is109
-for me true the size of possible attacks is0
-
-turn 234 :
-for me false the size of possible attacks is99
-for me true the size of possible attacks is0
-
-turn 235 :
-for me false the size of possible attacks is99
-for me true the size of possible attacks is0
-
-turn 236 :
-for me false the size of possible attacks is99
-for me true the size of possible attacks is0
-
-turn 237 :
-for me false the size of possible attacks is96
-for me true the size of possible attacks is0
-
-turn 238 :
-for me false the size of possible attacks is96
-for me true the size of possible attacks is0
-
-turn 239 :
-for me false the size of possible attacks is96
-for me true the size of possible attacks is0
-
-turn 240 :
-for me false the size of possible attacks is96
-for me true the size of possible attacks is0
-
-turn 241 :
-for me false the size of possible attacks is96
-for me true the size of possible attacks is0
-
-turn 242 :
-for me false the size of possible attacks is96
-for me true the size of possible attacks is0
-
-turn 243 :
-for me false the size of possible attacks is96
-for me true the size of possible attacks is0
-
-turn 244 :
-for me false the size of possible attacks is96
-for me true the size of possible attacks is0
-
-turn 245 :
-for me false the size of possible attacks is96
-for me true the size of possible attacks is0
-
-turn 246 :
-for me false the size of possible attacks is96
-for me true the size of possible attacks is0
-
-turn 247 :
-for me false the size of possible attacks is96
-for me true the size of possible attacks is0
-
-turn 248 :
-for me false the size of possible attacks is96
-for me true the size of possible attacks is0
-
-turn 249 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is0
-
-turn 250 :
-for me false the size of possible attacks is97
-for me true the size of possible attacks is0
-
-turn 251 :
-for me false the size of possible attacks is85
-for me true the size of possible attacks is0
-
-turn 252 :
-for me false the size of possible attacks is85
-for me true the size of possible attacks is0
-
-turn 253 :
-for me false the size of possible attacks is85
-for me true the size of possible attacks is0
-
-turn 254 :
-for me false the size of possible attacks is85
-for me true the size of possible attacks is0
-
-turn 255 :
-for me false the size of possible attacks is85
-for me true the size of possible attacks is0
-
-turn 256 :
-for me false the size of possible attacks is85
-for me true the size of possible attacks is0
-
-turn 257 :
-for me false the size of possible attacks is85
-for me true the size of possible attacks is0
-
-turn 258 :
-for me false the size of possible attacks is85
-for me true the size of possible attacks is0
-
-turn 259 :
-for me false the size of possible attacks is85
-for me true the size of possible attacks is0
-
-turn 260 :
-for me false the size of possible attacks is87
-for me true the size of possible attacks is0
-
-turn 261 :
-for me false the size of possible attacks is89
-for me true the size of possible attacks is0
-
-turn 262 :
-for me false the size of possible attacks is89
-for me true the size of possible attacks is0
-
-turn 263 :
-for me false the size of possible attacks is89
-for me true the size of possible attacks is0
-
-turn 264 :
-for me false the size of possible attacks is89
-for me true the size of possible attacks is0
-
-turn 265 :
-for me false the size of possible attacks is89
-for me true the size of possible attacks is0
-
-turn 266 :
-for me false the size of possible attacks is89
-for me true the size of possible attacks is0
-
-turn 267 :
-for me false the size of possible attacks is89
-for me true the size of possible attacks is0
-
-turn 268 :
-for me false the size of possible attacks is89
-for me true the size of possible attacks is0
-
-turn 269 :
-for me false the size of possible attacks is89
-for me true the size of possible attacks is0
-
-turn 270 :
-for me false the size of possible attacks is89
-for me true the size of possible attacks is0
-
-turn 271 :
-for me false the size of possible attacks is89
-for me true the size of possible attacks is0
+0 possible attacks this turn
