@@ -6,7 +6,7 @@
 import java.util.*;
 import java.io.*;
 
-public class PlanetWars {
+public class PlanetWars implements Cloneable {
     // Constructs a PlanetWars object instance, given a string containing a
     // description of a game state.
     public PlanetWars(String gameStateString) {
@@ -431,4 +431,11 @@ public class PlanetWars {
     // planets and fleets, would we!?
     private ArrayList<Planet> planets;
     private ArrayList<Fleet> fleets;
+
+    private PlanetWars(PlanetWars _pw){
+        _pw.planets.forEach(planet -> planets.add(planet.clone()));
+        _pw.fleets.forEach(fleet -> fleets.add(fleet.clone()));
+    }
+
+    public PlanetWars clone(){return new PlanetWars(this);}
 }

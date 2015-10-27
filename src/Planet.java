@@ -71,7 +71,7 @@ public class Planet implements Cloneable {
 	y = _p.y;
     }
 
-    public Object clone() {
+    public Planet clone() {
 	return new Planet(this);
     }
 }

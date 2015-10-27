@@ -86,7 +86,7 @@ public class Fleet implements Comparable, Cloneable {
 		totalTripLength = _f.totalTripLength;
 		turnsRemaining = _f.turnsRemaining;
 	}
-	public Object clone() {
+	public Fleet clone() {
 		return new Fleet(this);
 	}
 }

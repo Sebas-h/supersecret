@@ -13,32 +13,7 @@ public class MyBot {
     // your own. Check out the tutorials and articles on the contest website at
     // http://www.ai-contest.com/resources.
     public static void DoTurn(PlanetWars pw, Bot me, Bot enemy) {
-        me.planetWars = pw;
-        enemy.planetWars = pw;
 
-        Attack best_enemy_attack = enemy.get_best_attack();
-
-
-        List<Attack> my_attacks = me.get_all_attacks();
-        System.err.println(my_attacks.size() + " possible attacks this turn");
-
-
-        if (my_attacks.size() > 0) {
-            Attack best_attack = new Attack(null, null, 0, 0);
-            float val = 0;
-
-            for (Attack attack : my_attacks) {
-                Simulation sim = new Simulation(pw);
-                float simresult = sim.simulate(attack,best_enemy_attack);
-                if (simresult > val) {
-                    best_attack = attack;
-                    val = simresult;
-                }
-            }
-            if(best_attack.source != null){
-                pw.IssueOrder(best_attack.source, best_attack.destination, best_attack.amount);
-            }
-        }
 
 
     }
