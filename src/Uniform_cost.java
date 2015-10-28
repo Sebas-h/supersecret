@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -6,7 +7,7 @@ import java.util.List;
  * Created by Jan on 10/26/2015.
  */
 
-}
+
 
 public class Uniform_cost {
     Node ROOT;
@@ -45,14 +46,38 @@ public class Uniform_cost {
         return new Node(null, 0, null);
     }
 
-        // TODO @Sebas: sorteer code moet hier.
-
+    // TODO @Sebas: sorteer code moet hier.
     private void sortQueue() {
+        Collections.sort(queue, new Comparator<Node>() {
+            @Override
+            public int compare(Node o1, Node o2) {
+                if (o1.value < o2.value) {
+                    return 1;
+                } else if (o1.value > o2.value) {
+                    return -1;
+                }
+                return 0;
+            }
+        });
+
+        /*
+        Collections.swap(queue, Collections.max(queue, new Comparator<Node>() {
+            @Override
+            public int compare(Node o1, Node o2) {
+                if (o1.value > o2.value) {
+                    return 1;
+                } else if (o1.value < o2.value) {
+                    return -1;
+                }
+                return 0;
+            }
+        }), 0 );*/
+
     }
 
     // TODO @Sebas: goaltest code moet hier.
     private boolean goaltest(Node node) {
-        return false;
+        return  (node.value / 1.1) > ROOT.value;
     }
 
     private Attack longestAttack(List<Node> nodeList) {

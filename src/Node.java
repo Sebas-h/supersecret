@@ -13,19 +13,22 @@ public class Node {
 
     int depth;
 
+    float value;
+
     public Node(PlanetWars pw, int depth, List<List<Attack>> attacks){
         planetWars = pw;
         this.depth = depth;
         route = attacks;
+        value = planetWars.value_myself(1);
     }
 
-    public float value(){
+    /*public float value(){
         // TODO maybe remove dependency on player ID
         return planetWars.value_myself(1);
-    }
+    }*/
 
     public List<List<Attack>> getAttacks(){
-
+        return new ArrayList<>();
     }
 
     public List<Node> getChildren(){
@@ -38,7 +41,7 @@ public class Node {
             PlanetWars simulationResult = sim.simulate_one_turn();
             // Add the resulting planetWars object to a new node
             // and add the Node as a child
-            List<List<Attack>> tempRoute = route.;
+            List<List<Attack>> tempRoute = route;
             tempRoute.add(attack);
             children.add(
                     new Node(
@@ -46,5 +49,6 @@ public class Node {
                             depth + 1,
                             tempRoute));
         }
+        return children;
     }
 }
