@@ -9,16 +9,16 @@ import java.util.List;
 public class Node {
     PlanetWars planetWars;
 
-    List<List<Attack>> route;
+    Move first_Move;
 
     int depth;
 
     float value;
 
-    public Node(PlanetWars pw, int depth, List<List<Attack>> attacks){
+    public Node(PlanetWars pw, int depth, Move firstMove){
         planetWars = pw;
         this.depth = depth;
-        route = attacks;
+        first_Move = firstMove;
         value = planetWars.value_myself(1);
     }
 
@@ -28,10 +28,15 @@ public class Node {
     }*/
 
     public List<List<Attack>> getAttacks(){
+        getNtoN();
+
+
+
         return new ArrayList<>();
     }
 
     public List<Node> getChildren(){
+
         List<Node> children = new ArrayList<>();
         List<List<Attack>> attackLists = getAttacks();
         // For every Attack possible.
@@ -39,16 +44,47 @@ public class Node {
             // Simulate one turn
             Simulation sim = new Simulation(planetWars, attack);
             PlanetWars simulationResult = sim.simulate_one_turn();
-            // Add the resulting planetWars object to a new node
-            // and add the Node as a child
-            List<List<Attack>> tempRoute = route;
-            tempRoute.add(attack);
+            if (first_Move == null){
+                children.add(new Node(simulationResult,
+                        depth + 1,
+                        new Move(attack)));
+            }
             children.add(
                     new Node(
                             simulationResult,
                             depth + 1,
-                            tempRoute));
+                            new Move(first_Move.attacks)));
         }
         return children;
     }
+
+    public List<List<Attack>> getNtoN(){
+
+        // TODO: skip some possibilities when N gets to big
+        int N;
+        if(planetWars.MyPlanets().size() > planetWars.NotMyPlanets().size()){
+            N = planetWars.NotMyPlanets().size();
+        }
+        else{
+            N = planetWars.MyPlanets().size();
+        }
+
+        for(int i = 1; i < N; i++){
+            CombinationGenerator cg = new CombinationGenerator(N, i);
+            PermutationGenerator pg = new PermutationGenerator(N, i);
+
+
+
+        }
+
+
+
+
+
+    }
+
+
+
+
+
 }

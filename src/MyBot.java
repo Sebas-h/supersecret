@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 
+
 public class MyBot {
     // The DoTurn function is where your code goes. The PlanetWars object
     // contains the state of the game, including information about all planets

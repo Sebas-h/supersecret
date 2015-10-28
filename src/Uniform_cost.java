@@ -18,7 +18,7 @@ public class Uniform_cost {
     List<Node> queue = new ArrayList<>();
 
     public Uniform_cost(PlanetWars planetWars) {
-        ROOT = new Node(planetWars, 0, new ArrayList<List<Attack>>());
+        ROOT = new Node(planetWars, 0, null);
         List<Node> root_children = ROOT.getChildren();
         Attack longest_attack = longestAttack(root_children);
         Attack shortest_attack = shortestAtack(root_children);
@@ -45,8 +45,7 @@ public class Uniform_cost {
         }
         return new Node(null, 0, null);
     }
-
-    // TODO @Sebas: sorteer code moet hier.
+    
     private void sortQueue() {
         Collections.sort(queue, new Comparator<Node>() {
             @Override
@@ -75,16 +74,17 @@ public class Uniform_cost {
 
     }
 
-    // TODO @Sebas: goaltest code moet hier.
     private boolean goaltest(Node node) {
         return  (node.value / 1.1) > ROOT.value;
     }
 
+
+    // TODO deze fucties omschrijven voor de nieuwe move klasse
     private Attack longestAttack(List<Node> nodeList) {
         int longest = 0;
         Attack longest_attack = new Attack(null, null, 0, 0);
         for (Node node : nodeList) {
-            Attack attack = node.route.get(0).get(0);
+            Attack attack = node.first_attack;
             if (attack.turns > longest) {
                 longest_attack = attack;
             }
@@ -92,6 +92,8 @@ public class Uniform_cost {
         return longest_attack;
     }
 
+
+    // TODO deze fucties omschrijven voor de nieuwe move klasse
     private Attack shortestAtack(List<Node> nodeList) {
         // TODO replace 999 with something that makes sense.
         // This is dumb
@@ -99,7 +101,7 @@ public class Uniform_cost {
 
         Attack smallest_attack = new Attack(null, null, 0, 0);
         for (Node node : nodeList) {
-            Attack attack = node.route.get(0).get(0);
+            Attack attack = node.first_attack;
             if (attack.turns < smallest) {
                 smallest_attack = attack;
             }
