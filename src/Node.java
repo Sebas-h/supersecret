@@ -1,65 +1,57 @@
-import com.sun.javafx.collections.NonIterableChange;
-
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Jan on 10/26/2015.
- */
 public class Node {
     PlanetWars planetWars;
 
-    Move first_Move;
+    Turn first_Turn;
 
     int depth;
 
     float value;
 
-    public Node(PlanetWars pw, int depth, Move firstMove){
+    public Node(PlanetWars pw, int depth, Turn firstTurn){
         planetWars = pw;
         this.depth = depth;
-        first_Move = firstMove;
+        first_Turn = firstTurn;
         value = planetWars.value_myself(1);
     }
 
-    /*public float value(){
-        // TODO maybe remove dependency on player ID
-        return planetWars.value_myself(1);
-    }*/
-
-    public List<List<Attack>> getAttacks(){
-        getNtoN();
-
-
-
-        return new ArrayList<>();
-    }
 
     public List<Node> getChildren(){
 
         List<Node> children = new ArrayList<>();
-        List<List<Attack>> attackLists = getAttacks();
+        List<Turn> turnList = getTurns();
         // For every Attack possible.
-        for(List<Attack> attack : attackLists){
+        for(Turn turn : turnList){
             // Simulate one turn
-            Simulation sim = new Simulation(planetWars, attack);
+            Simulation sim = new Simulation(planetWars, turn.attacks);
             PlanetWars simulationResult = sim.simulate_one_turn();
-            if (first_Move == null){
+            if (first_Turn == null){
                 children.add(new Node(simulationResult,
                         depth + 1,
-                        new Move(attack)));
+                        new Turn(turn.attacks)));
             }
             children.add(
                     new Node(
                             simulationResult,
                             depth + 1,
-                            new Move(first_Move.attacks)));
+                            new Turn(first_Turn.attacks)));
         }
         return children;
     }
 
-    public List<List<Attack>> getNtoN(){
+    public List<Turn> getTurns(){
+        getNtoN();
+        getNtoM();
 
+
+        return new ArrayList<>();
+    }
+
+    public List<Turn> getNtoN(){
+        List<Turn> turns;
+        List<Attack> attacks;
         // TODO: skip some possibilities when N gets to big
         int N;
         if(planetWars.MyPlanets().size() > planetWars.NotMyPlanets().size()){
@@ -73,14 +65,30 @@ public class Node {
             CombinationGenerator cg = new CombinationGenerator(N, i);
             PermutationGenerator pg = new PermutationGenerator(N, i);
 
+        }
+
+        // Product, where i is size of n:
+        for (int i = 0; i < N; i++) {
 
 
         }
 
+        return new ArrayList<>();
+    }
 
+    public List<Turn> getNtoM(){
+        List<Turn> turns;
+        List<Attack> attacks;
 
+        /*
+        get list of MyPlanets
+        get list of NotMyPlanets
+        for loop through MyPlanets
+            for loop through NotMyPlanets
+                <samenkoppelen>
+         */
 
-
+        return new ArrayList<>();
     }
 
 

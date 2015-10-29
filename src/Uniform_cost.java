@@ -3,12 +3,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- * Created by Jan on 10/26/2015.
- */
-
-
-
 public class Uniform_cost {
     Node ROOT;
     int minDepth;
@@ -79,31 +73,34 @@ public class Uniform_cost {
     }
 
 
-    // TODO deze fucties omschrijven voor de nieuwe move klasse
+    // TODO deze fucties omschrijven voor de nieuwe Turn klasse
     private Attack longestAttack(List<Node> nodeList) {
         int longest = 0;
         Attack longest_attack = new Attack(null, null, 0, 0);
         for (Node node : nodeList) {
-            Attack attack = node.first_attack;
-            if (attack.turns > longest) {
-                longest_attack = attack;
+            Turn turn = node.first_Turn;
+            for (int i = 0; i < turn.attacks.size() ; i++) {
+                if(turn.attacks.get(i).turns > longest){
+                    longest_attack = turn.attacks.get(i);
+                }
             }
         }
         return longest_attack;
     }
 
 
-    // TODO deze fucties omschrijven voor de nieuwe move klasse
+    // TODO deze fucties omschrijven voor de nieuwe Turn klasse
     private Attack shortestAtack(List<Node> nodeList) {
         // TODO replace 999 with something that makes sense.
         // This is dumb
         int smallest = 999;
-
         Attack smallest_attack = new Attack(null, null, 0, 0);
         for (Node node : nodeList) {
-            Attack attack = node.first_attack;
-            if (attack.turns < smallest) {
-                smallest_attack = attack;
+            Turn turn = node.first_Turn;
+            for (int i = 0; i < turn.attacks.size() ; i++) {
+                if(turn.attacks.get(i).turns < smallest){
+                    smallest_attack = turn.attacks.get(i);
+                }
             }
         }
         return smallest_attack;
