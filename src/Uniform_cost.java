@@ -39,7 +39,7 @@ public class Uniform_cost {
         }
         return new Node(null, 0, null);
     }
-    
+
     private void sortQueue() {
         Collections.sort(queue, new Comparator<Node>() {
             @Override

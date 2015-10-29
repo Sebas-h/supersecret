@@ -62,8 +62,8 @@ public class Node {
         }
 
         for(int i = 1; i < N; i++){
-            CombinationGenerator cg = new CombinationGenerator(N, i);
-            PermutationGenerator pg = new PermutationGenerator(N, i);
+            List<List<Planet>>
+
 
         }
 
@@ -74,6 +74,64 @@ public class Node {
         }
 
         return new ArrayList<>();
+    }
+
+    // TODO fix nested lists ugliness
+    private List<List<List<Planet>>> product (List<List<Planet>> list1, List<List<Planet>> list2){
+        List<List<List<Planet>>> output = new ArrayList<>();
+
+        for (List<Planet> collection1 : list1){
+            for(List<Planet> collection2 : list2){
+                List<List<Planet>> product = new ArrayList<>();
+                product.add(collection1);
+                product.add(collection2);
+                output.add(product);
+
+            }
+        }
+        return output;
+    }
+
+    private Turn productToMove(List<List<List<Planet>>> product){
+        for(List<List<Planet>> )
+    }
+
+    private List<List<Planet>> getPermutations(List<Planet> planets, int size){
+        List<List<Planet>> output = new ArrayList<>();
+
+        // Make a new generator
+        PermutationGenerator pg = new PermutationGenerator(planets.size(), size);
+
+        // While there are still permutations left
+        while(pg.hasMore()){
+            // make a new list for the current permutation
+            List<Planet> permutation = new ArrayList<>();
+            // get the indices to construct a permutation
+            int [] indices = pg.customGetNext();
+            // make the permutation
+            for(int index : indices){
+                permutation.add(planets.get(index));
+            }
+            output.add(permutation);
+        }
+        return output;
+    }
+
+    private List<List<Planet>> getCombinations(List<Planet> planets, int size){
+        List<List<Planet>> output = new ArrayList<>();
+
+        CombinationGenerator cg = new CombinationGenerator(planets.size(), size);
+
+        while(cg.hasMore()){
+            List<Planet> combination = new ArrayList<>();
+            int[] indices = cg.getNext();
+            for(int index : indices){
+                combination.add(planets.get(index));
+            }
+            output.add(combination);
+        }
+        return output;
+
     }
 
     public List<Turn> getNtoM(){
