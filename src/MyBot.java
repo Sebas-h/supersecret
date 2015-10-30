@@ -13,7 +13,7 @@ public class MyBot {
     // starting point, or you can throw it out entirely and replace it with
     // your own. Check out the tutorials and articles on the contest website at
     // http://www.ai-contest.com/resources.
-    public static void DoTurn(PlanetWars pw, Bot me, Bot enemy) {
+    public static void DoTurn(PlanetWars pw) {
 
 
 
@@ -33,8 +33,7 @@ public class MyBot {
         }
         int turn = 1;
 
-        Bot ourBot = new Bot(null, 1);
-        Bot enemyBot = new Bot(null, 2);
+
         String line = "";
         String message = "";
         int c;
@@ -47,7 +46,7 @@ public class MyBot {
                             PlanetWars pw = new PlanetWars(message);
                             System.err.println("\nturn " + turn + " :");
                             try {
-                                DoTurn(pw, ourBot, enemyBot);
+                                DoTurn(pw);
                             } catch (Exception e) {
                                 System.err.println(pw.gamestateString);
                                 System.err.println("caught exception");

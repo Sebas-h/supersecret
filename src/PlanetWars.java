@@ -95,33 +95,43 @@ public class PlanetWars implements Cloneable {
         });
     }
 
-    public Float value_myself(int playerID){
+    public Float value_myself(){
 
-        int otherID;
-        if (playerID == 1){
-            otherID = 2;
-        }
-        else{
-            otherID = 1;
-        }
-        Bot bot = new Bot(this, playerID);
-        Bot otherbot = new Bot(this, otherID);
-
-        int my_planets = bot.getPlanets().size();
-        int enemy_planets = otherbot.getPlanets().size();
+        int my_planets = MyPlanets().size();
+        int enemy_planets = EnemyPlanets().size();
 
         int my_growth = 0;
-        for (Planet planet : bot.getPlanets()){
+        for(Planet planet : MyPlanets()){
             my_growth += planet.GrowthRate();
         }
 
         int enemy_growth = 0;
-        for(Planet planet : otherbot.getPlanets()){
+        for(Planet planet : EnemyPlanets()){
             enemy_growth += planet.GrowthRate();
         }
 
-        int my_ships = bot.getShips();
-        int enemy_ships = otherbot.getShips();
+        int my_ships = 0;
+        int enemy_ships = 0;
+        for(Fleet fleet : Fleets()){
+            if(fleet.Owner() == 1){
+                my_ships += fleet.NumShips();
+            }
+            else if(fleet.Owner() == 2){
+                enemy_ships += fleet.NumShips();
+            }
+        }
+
+        for(Planet planet : Planets()){
+            if(planet.Owner() == 1){
+                my_ships += planet.NumShips();
+            }
+            else if(planet.Owner() == 2) {
+                enemy_ships += planet.NumShips();
+            }
+        }
+
+
+
 
         // TODO add multipliers per heuristic.
         // By adding the multiplier, some heuristics may have a bigger impact on decision making
@@ -243,6 +253,11 @@ public class PlanetWars implements Cloneable {
         else{
             return planet.NumShips() + planet.GrowthRate() * turns;
         }
+    }
+
+    // Small wrapper for the Distance method in PlanetWars
+    public int Distance(Planet source, Planet destination){
+        return Distance(source.PlanetID(), destination.PlanetID());
     }
 
     // Returns the distance between two planets, rounded up to the next highest

@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Created by Jan on 10/19/2015.
  */
-
+/*
 public class Bot{
     int playerID;
     PlanetWars planetWars;
@@ -149,4 +149,4 @@ public class Bot{
     }
 
 }
-
+*/

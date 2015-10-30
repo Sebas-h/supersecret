@@ -15,7 +15,7 @@ public class Node {
         planetWars = pw;
         this.depth = depth;
         first_Turn = firstTurn;
-        value = planetWars.value_myself(1);
+        value = planetWars.value_myself();
     }
 
 
@@ -44,16 +44,20 @@ public class Node {
 
     // Wat doet dit??
     public List<Turn> getTurns(){
-        getNtoN();
+        List<Turn> output = new ArrayList<>();
+        List<Turn> a = getNtoN();
 
-        getNtoM();
+        List<Turn> b = getNtoM();
+        output.addAll(a);
+        output.addAll(b);
 
 
-        return new ArrayList<>();
+
+        return output;
     }
 
     public List<Turn> getNtoN(){
-        List<Turn> turns;
+        List<Turn> turns = new ArrayList<>();
         List<Attack> attacks;
         // TODO: skip some possibilities when N gets to big
         int N;
@@ -64,17 +68,18 @@ public class Node {
             N = planetWars.MyPlanets().size();
         }
 
+
+
         // N to N is the product(combination(myplanets, N), permutations(notmyplanets, N))
 
-        // TODO omg help sebas het is half 2 en ik weet het niet meer :p
         for(int i= 1; i > N; i++)
         {
-            productToTurn(product(getCombinations(planetWars.MyPlanets(), i), getPermutations(planetWars.NotMyPlanets(), i)));
-
+            List<Turn> a = productToTurn(product(getCombinations(planetWars.MyPlanets(), i), getPermutations(planetWars.NotMyPlanets(), i)));
+            turns.addAll(a);
         }
 
 
-        return new ArrayList<>();
+        return turns;
     }
 
     // TODO fix nested lists ugliness
@@ -105,7 +110,7 @@ public class Node {
                 List<Planet> notMyPlanets = currentProduct.get(1);
 
                 for(Planet notMyPlanet :notMyPlanets){
-                    attacks.add(new Attack(myPlanet, notMyPlanet, notMyPlanet.NumShips() + 1, Distance(myPlanet, notMyPlanet) ));
+                    attacks.add(new Attack(myPlanet, notMyPlanet, notMyPlanet.NumShips() + 1, planetWars.Distance(myPlanet, notMyPlanet) ));
                 }
                 output.add(new Turn(attacks));
 
@@ -119,7 +124,7 @@ public class Node {
                     Planet myPlanet = myPlanets.get(i);
                     Planet notMyPlanet = notMyPlanets.get(i);
                     if (isValidAttack(myPlanet, notMyPlanet)){
-                        int distance = Distance(myPlanet, notMyPlanet);
+                        int distance = planetWars.Distance(myPlanet, notMyPlanet);
 
                         attacks.add(new Attack(myPlanet, notMyPlanet, planetWars.predictShips(notMyPlanet, distance), distance));
                     }
@@ -163,10 +168,7 @@ public class Node {
         return output;
     }
 
-    // Small wrapper for the Distance method in PlanetWars
-    private int Distance(Planet source, Planet destination){
-        return planetWars.Distance(source.PlanetID(), destination.PlanetID());
-    }
+
 
     private List<List<Planet>> getCombinations(List<Planet> planets, int size){
         List<List<Planet>> output = new ArrayList<>();

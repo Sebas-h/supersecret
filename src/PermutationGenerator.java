@@ -89,6 +89,7 @@ public class PermutationGenerator {
         while(a.length >limit){
             a = getNext();
         }
+        System.out.println(a);
         return a;
     }
 
