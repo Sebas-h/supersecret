@@ -472,7 +472,7 @@ public class PlanetWars implements Cloneable {
         // Get all my planets:
         List<Planet> mp = this.MyPlanets();
         // Return mp if <= 4 planets:
-        if (mp.size() <= 4){
+        if (mp.size() <= limit){
             return mp;
         }
         // TODO: extend criteria by which "my planets" are chosen (distance form enemy and being attacked yes/no are important as well).
@@ -498,7 +498,7 @@ public class PlanetWars implements Cloneable {
         // Get all my planets:
         List<Planet> nmp = this.NotMyPlanets();
         // Return mp if <= 4 planets:
-        if (nmp.size() <= 4){
+        if (nmp.size() <= limit){
             return nmp;
         }
 

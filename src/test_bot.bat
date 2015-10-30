@@ -1,6 +1,6 @@
 @REM compiles all java code in the working directory
 
- javac *.java
+javac -classpath C:\JAVA_LIBS\guava-18.0\guava-18.0.jar *.java
 
 
 
@@ -25,5 +25,5 @@ set MAP=maps/map%mapNumber%.txt
 @REM runs the game
 
 
-java -jar tools/PlayGame.jar %MAP% 1000 1000 log.txt "java MyBot" "java -jar example_bots\DualBot.jar"| java -jar tools/ShowGame.jar
+java -jar tools/PlayGame.jar %MAP% 1000 1000 log.txt "java SimpleBot" "java SimpleBot"| java -jar tools/ShowGame.jar
 

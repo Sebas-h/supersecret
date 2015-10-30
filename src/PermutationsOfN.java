@@ -5,6 +5,8 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
+
+
 public class PermutationsOfN<T> {
     public static void main( String[] args ) {
         List<String> f = Lists.newArrayList( "A", "B", "C", "D" );

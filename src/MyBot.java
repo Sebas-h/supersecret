@@ -29,7 +29,7 @@ public class MyBot {
             System.setErr(ps);
             System.err.println("initializing");
         } catch (FileNotFoundException e) {
-            // System.exit(-1);
+            System.exit(-1);
         }
         int turn = 1;
 
@@ -44,7 +44,9 @@ public class MyBot {
                     case '\n':
                         if (line.equals("go")) {
                             PlanetWars pw = new PlanetWars(message);
+
                             System.err.println("\nturn " + turn + " :");
+                            System.err.println(pw.gamestateString);
                             try {
                                 DoTurn(pw);
                             } catch (Exception e) {

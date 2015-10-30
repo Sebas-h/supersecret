@@ -1,5 +1,6 @@
 import java.text.AttributedString;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Node {
@@ -58,7 +59,6 @@ public class Node {
 
     public List<Turn> getNtoN(){
         List<Turn> turns = new ArrayList<>();
-        List<Attack> attacks;
         List<Planet> myPlanets = planetWars.FilteredMyPlanets();
         List<Planet> notMyPlanets = planetWars.FilteredNotMyPlanets();
 
@@ -84,7 +84,6 @@ public class Node {
         return turns;
     }
 
-
     // TODO fix nested lists ugliness
     private List<List<List<Planet>>> product (List<List<Planet>> list1, List<List<Planet>> list2){
         List<List<List<Planet>>> output = new ArrayList<>();
@@ -101,6 +100,8 @@ public class Node {
         return output;
     }
 
+
+    //
     private List<Turn> productToTurn(List<List<List<Planet>>> product){
         List<Turn> output = new ArrayList<>();
         for(List<List<Planet>> currentProduct: product ) {
@@ -149,27 +150,20 @@ public class Node {
         return output;
     }
 
+
     private List<List<Planet>> getPermutations(List<Planet> planets, int size){
         List<List<Planet>> output = new ArrayList<>();
 
-        // Make a new generator
-        PermutationGenerator pg = new PermutationGenerator(planets.size(), size);
+        PermutationsOfN p = new PermutationsOfN();
+        Collection<List<Planet>> stuff = p.permutations(planets, size);
 
-        // While there are still permutations left
-        while(pg.hasMore()){
-            // make a new list for the current permutation
-            List<Planet> permutation = new ArrayList<>();
-            // get the indices to construct a permutation
-            int [] indices = pg.customGetNext();
-            // make the permutation
-            for(int index : indices){
-                permutation.add(planets.get(index));
-            }
-
+        for(List<Planet> permutation : stuff){
             output.add(permutation);
         }
+
         return output;
     }
+
 
 
 
