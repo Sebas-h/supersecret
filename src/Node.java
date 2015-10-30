@@ -64,20 +64,19 @@ public class Node {
 
         // TODO: skip some possibilities when N gets to big
         int N;
-        if(planetWars.MyPlanets().size() > planetWars.NotMyPlanets().size()){
-            N = planetWars.NotMyPlanets().size();
+        if(myPlanets.size() > notMyPlanets.size()){
+            N = notMyPlanets.size();
         }
         else{
-            N = planetWars.MyPlanets().size();
+            N = myPlanets.size();
         }
-
 
 
         // N to N is the product(combination(myplanets, N), permutations(notmyplanets, N))
 
         for(int i= 1; i > N; i++)
         {
-            List<Turn> a = productToTurn(product(getCombinations(planetWars.MyPlanets(), i), getPermutations(planetWars.NotMyPlanets(), i)));
+            List<Turn> a = productToTurn(product(getCombinations(myPlanets, i), getPermutations(notMyPlanets, i)));
             turns.addAll(a);
         }
 
