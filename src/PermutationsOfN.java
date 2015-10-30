@@ -1,6 +1,3 @@
-/**
- * Created by Jan on 30-10-2015.
- */
 import java.util.Collection;
 import java.util.List;
 

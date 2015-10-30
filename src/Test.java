@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Jan on 30-10-2015.
@@ -17,7 +15,7 @@ public class Test {
         }
         };
 
-        for (int i = 0; i < ; i++) {
+        for (int i = 0; i < 2; i++) {
             
         }
         long started = System.currentTimeMillis();
@@ -28,6 +26,7 @@ public class Test {
 
         //result.forEach(iets -> {System.out.println(iets);});
         System.out.println("time taken: " + time);
+
     };
 
 }

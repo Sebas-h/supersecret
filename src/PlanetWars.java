@@ -461,5 +461,64 @@ public class PlanetWars implements Cloneable {
         _pw.fleets.forEach(fleet -> fleets.add(fleet.clone()));
     }
 
+    //------------------------------------------------//
+    //------- Custom methods and/or properties: ------//
+    //------------------------------------------------//
+
+    public List<Planet> FilteredMyPlanets(){
+        int limit = 4;
+        List<Planet> fp = new ArrayList<>();
+
+        // Get all my planets:
+        List<Planet> mp = this.MyPlanets();
+        // Return mp if <= 4 planets:
+        if (mp.size() <= 4){
+            return mp;
+        }
+        // TODO: extend criteria by which "my planets" are chosen (distance form enemy and being attacked yes/no are important as well).
+        // Sort planets based of nr of ships
+        Collections.sort(mp, new Comparator<Planet>() {
+            @Override
+            public int compare(Planet a, Planet b) {
+                // Descending order:
+                return a.NumShips() > b.NumShips() ? -1 : a.NumShips() == b.NumShips() ? 0 : 1;
+            }
+        });
+        // Get the {limit} planets with largest nr of ships:
+        for (int i = 0; i < limit+1 ; i++) {
+            fp.add(mp.get(i));
+        }
+        return fp;
+    }
+
+    public List<Planet> FilteredNotMyPlanets(){
+        int limit = 4;
+        List<Planet> fp = new ArrayList<>();
+
+        // Get all my planets:
+        List<Planet> nmp = this.NotMyPlanets();
+        // Return mp if <= 4 planets:
+        if (nmp.size() <= 4){
+            return nmp;
+        }
+
+        // TODO: extend criteria by which "not my planets" are chosen
+        // Sort planets based of nr of ships
+        Collections.sort(nmp, new Comparator<Planet>() {
+            @Override
+            public int compare(Planet a, Planet b) {
+                // Ascending order:
+                return a.NumShips() < b.NumShips() ? -1 : a.NumShips() == b.NumShips() ? 0 : 1;
+            }
+        });
+
+        // Get the {limit} planets with largest nr of ships:
+        for (int i = 0; i < limit+1 ; i++) {
+            fp.add(nmp.get(i));
+        }
+        return fp;
+
+    }
+
     public PlanetWars clone(){return new PlanetWars(this);}
 }

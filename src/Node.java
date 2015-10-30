@@ -59,6 +59,9 @@ public class Node {
     public List<Turn> getNtoN(){
         List<Turn> turns = new ArrayList<>();
         List<Attack> attacks;
+        List<Planet> myPlanets = planetWars.FilteredMyPlanets();
+        List<Planet> notMyPlanets = planetWars.FilteredNotMyPlanets();
+
         // TODO: skip some possibilities when N gets to big
         int N;
         if(planetWars.MyPlanets().size() > planetWars.NotMyPlanets().size()){
@@ -81,6 +84,7 @@ public class Node {
 
         return turns;
     }
+
 
     // TODO fix nested lists ugliness
     private List<List<List<Planet>>> product (List<List<Planet>> list1, List<List<Planet>> list2){
