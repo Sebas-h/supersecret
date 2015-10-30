@@ -1,3 +1,4 @@
+import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +42,10 @@ public class Node {
         return children;
     }
 
+    // Wat doet dit??
     public List<Turn> getTurns(){
         getNtoN();
+
         getNtoM();
 
 
@@ -61,17 +64,15 @@ public class Node {
             N = planetWars.MyPlanets().size();
         }
 
-        for(int i = 1; i < N; i++){
-            List<List<Planet>>
+        // N to N is the product(combination(myplanets, N), permutations(notmyplanets, N))
 
-
-        }
-
-        // Product, where i is size of n:
-        for (int i = 0; i < N; i++) {
-
+        // TODO omg help sebas het is half 2 en ik weet het niet meer :p
+        for(int i= 1; i > N; i++)
+        {
+            productToTurn(product(getCombinations(planetWars.MyPlanets(), i), getPermutations(planetWars.NotMyPlanets(), i)));
 
         }
+
 
         return new ArrayList<>();
     }
@@ -92,8 +93,52 @@ public class Node {
         return output;
     }
 
-    private Turn productToMove(List<List<List<Planet>>> product){
-        for(List<List<Planet>> )
+    private List<Turn> productToTurn(List<List<List<Planet>>> product){
+        List<Turn> output = new ArrayList<>();
+        for(List<List<Planet>> currentProduct: product ) {
+
+            // if the product is a result of 1 to M
+            List<Attack> attacks = new ArrayList<>();
+            if (currentProduct.get(0).size()== 1) {
+                // Map 1 to M
+                Planet myPlanet = currentProduct.get(0).get(0);
+                List<Planet> notMyPlanets = currentProduct.get(1);
+
+                for(Planet notMyPlanet :notMyPlanets){
+                    attacks.add(new Attack(myPlanet, notMyPlanet, notMyPlanet.NumShips() + 1, Distance(myPlanet, notMyPlanet) ));
+                }
+                output.add(new Turn(attacks));
+
+            }
+            // if the product is a result of N to N
+            else{
+                boolean allAttacksValid = true;
+                List<Planet> myPlanets = currentProduct.get(0);
+                List<Planet> notMyPlanets = currentProduct.get(1);
+                for(int i = 0; i<myPlanets.size(); i++){
+                    Planet myPlanet = myPlanets.get(i);
+                    Planet notMyPlanet = notMyPlanets.get(i);
+                    if (isValidAttack(myPlanet, notMyPlanet)){
+                        int distance = Distance(myPlanet, notMyPlanet);
+
+                        attacks.add(new Attack(myPlanet, notMyPlanet, planetWars.predictShips(notMyPlanet, distance), distance));
+                    }
+                    else{
+                        allAttacksValid = false;
+                    }
+
+                }
+                if(allAttacksValid){
+                    output.add(new Turn(attacks));
+                }
+
+            }
+
+
+        }
+
+
+        return output;
     }
 
     private List<List<Planet>> getPermutations(List<Planet> planets, int size){
@@ -112,9 +157,15 @@ public class Node {
             for(int index : indices){
                 permutation.add(planets.get(index));
             }
+
             output.add(permutation);
         }
         return output;
+    }
+
+    // Small wrapper for the Distance method in PlanetWars
+    private int Distance(Planet source, Planet destination){
+        return planetWars.Distance(source.PlanetID(), destination.PlanetID());
     }
 
     private List<List<Planet>> getCombinations(List<Planet> planets, int size){
@@ -150,7 +201,52 @@ public class Node {
     }
 
 
+    // Check viability of an attack in a 1 to 1 situation
+    private boolean isValidAttack(Planet source, Planet destination){
+        List<Planet> neutralPlanets = planetWars.NeutralPlanets();
 
+        if (planetWars.predictShips(destination, planetWars.Distance(source.PlanetID(), destination.PlanetID())) > destination.NumShips() && !fleet_already_sent(destination)) {
+            return true;
+        }
+        else if (planetWars.predictShips(destination, planetWars.Distance(source.PlanetID(), destination.PlanetID())) < source.NumShips()
+                &&
+                !fleet_already_sent(destination)) {
+            return true;
+
+        }
+        else {
+            return false;
+        }
+
+    }
+
+    // Check viability of an attack given a 1 to N situation
+    private boolean isValidAttack(Planet myPlanet, List<Planet> notMyPlanets){
+        // check if my planet has enough forces to take on all enemy planets at once
+        int totalEnemyShips = 0;
+        for(Planet notMyPlanet : notMyPlanets){
+            // increment the amount of total ships needed
+            totalEnemyShips += planetWars.predictShips(notMyPlanet, planetWars.Distance(myPlanet.PlanetID(), notMyPlanet.PlanetID()));
+            // If at any point the amount of ships needed exceeds the amount available, this attack is not viable
+            if(totalEnemyShips + notMyPlanets.size()>=myPlanet.NumShips()){
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+
+
+    private boolean fleet_already_sent(Planet destination){
+        List<Fleet> fleets = planetWars.Fleets();
+        for(Fleet fleet : fleets){
+            if(fleet.DestinationPlanet() == destination.PlanetID() && fleet.Owner() == 1){
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 }

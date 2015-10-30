@@ -236,6 +236,15 @@ public class PlanetWars implements Cloneable {
         return r;
     }
 
+    public int predictShips(Planet planet, int turns){
+        if(NeutralPlanets().contains(planet)){
+            return planet.NumShips();
+        }
+        else{
+            return planet.NumShips() + planet.GrowthRate() * turns;
+        }
+    }
+
     // Returns the distance between two planets, rounded up to the next highest
     // integer. This is the number of discrete time steps it takes to get
     // between the two planets.
