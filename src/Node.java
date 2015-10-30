@@ -30,15 +30,19 @@ public class Node {
             Simulation sim = new Simulation(planetWars, turn.attacks);
             PlanetWars simulationResult = sim.simulate_one_turn();
             if (first_Turn == null){
-                children.add(new Node(simulationResult,
+                children.add(new Node(
+                        simulationResult,
                         depth + 1,
                         new Turn(turn.attacks)));
             }
-            children.add(
-                    new Node(
-                            simulationResult,
-                            depth + 1,
-                            new Turn(first_Turn.attacks)));
+            else{
+                children.add(
+                        new Node(
+                                simulationResult,
+                                depth + 1,
+                                first_Turn));
+            }
+
         }
         return children;
     }
@@ -74,7 +78,7 @@ public class Node {
 
         // N to N is the product(combination(myplanets, N), permutations(notmyplanets, N))
 
-        for(int i= 1; i > N; i++)
+        for(int i= 1; i <= N; i++)
         {
             List<Turn> a = productToTurn(product(getCombinations(myPlanets, i), getPermutations(notMyPlanets, i)));
             turns.addAll(a);

@@ -169,7 +169,7 @@ public class PlanetWars implements Cloneable {
 
 
         // add it to the Fleets list
-        Fleets().add(fleet);
+        fleets.add(fleet);
 
         // get the affected planets
         Planet my_source = GetPlanet(attack.source.PlanetID());
@@ -456,14 +456,24 @@ public class PlanetWars implements Cloneable {
     private ArrayList<Planet> planets;
     private ArrayList<Fleet> fleets;
 
-    private PlanetWars(PlanetWars _pw){
-        _pw.planets.forEach(planet -> planets.add(planet.clone()));
-        _pw.fleets.forEach(fleet -> fleets.add(fleet.clone()));
-    }
+
 
     //------------------------------------------------//
     //------- Custom methods and/or properties: ------//
     //------------------------------------------------//
+    private PlanetWars(PlanetWars _pw){
+        this.planets = new ArrayList<>();
+        this.fleets = new ArrayList<>();
+        for(Planet planet : _pw.Planets()){
+            Planet lol = planet.clone();
+            this.planets.add(lol);
+        }
+
+        for(Fleet fleet : _pw.Fleets()){
+            fleets.add(fleet.clone());
+        }
+
+    }
 
     public List<Planet> FilteredMyPlanets(){
         int limit = 4;
@@ -485,7 +495,7 @@ public class PlanetWars implements Cloneable {
             }
         });
         // Get the {limit} planets with largest nr of ships:
-        for (int i = 0; i < limit+1 ; i++) {
+        for (int i = 0; i < limit ; i++) {
             fp.add(mp.get(i));
         }
         return fp;
@@ -513,7 +523,7 @@ public class PlanetWars implements Cloneable {
         });
 
         // Get the {limit} planets with largest nr of ships:
-        for (int i = 0; i < limit+1 ; i++) {
+        for (int i = 0; i < limit ; i++) {
             fp.add(nmp.get(i));
         }
         return fp;

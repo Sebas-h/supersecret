@@ -18,7 +18,7 @@ public class Uniform_cost {
         Attack shortest_attack = shortestAtack(root_children);
 
         maxDepth = longest_attack.turns;
-        minDepth = shortest_attack.turns;
+       minDepth = shortest_attack.turns;
         queue.addAll(root_children);
     }
 
@@ -80,7 +80,9 @@ public class Uniform_cost {
         for (Node node : nodeList) {
             Turn turn = node.first_Turn;
             for (int i = 0; i < turn.attacks.size() ; i++) {
+
                 if(turn.attacks.get(i).turns > longest){
+                    longest = turn.attacks.get(i).turns;
                     longest_attack = turn.attacks.get(i);
                 }
             }

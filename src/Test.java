@@ -8,24 +8,31 @@ public class Test {
 
 
     public static void main(String[] args){
-        List<Integer> input = new ArrayList<Integer>(){{
-            for (int i = 0; i < 4; i++) {
-                this.add(i);
-            }
-        }
-        };
+        String input = "P 10.752745 11.806236 0 91 5" + "\n" +
+        "P 7.718253 19.228268 1 100 5" + "\n" +
+        "P 13.787238 4.384205 2 100 5" + "\n" +
+        "P 16.588562 4.190298 0 60 3" + "\n" +
+        "P 4.916929 19.422175 0 60 3" + "\n" +
+        "P 17.101633 8.010545 0 72 3" + "\n" +
+        "P 4.403858 15.601928 0 72 3" + "\n" +
+        "P 4.792662 21.521360 0 73 2" + "\n" +
+        "P 16.712829 2.091113 0 73 2" + "\n" +
+        "P 18.029651 14.178538 0 27 4" + "\n" +
+        "P 3.475840 9.433934 0 27 4" + "\n" +
+        "P 6.516837 3.387469 0 19 2" + "\n" +
+        "P 14.988654 20.225003 0 19 2" + "\n" +
+        "P 20.614757 14.282934 0 39 4" + "\n" +
+        "P 0.890734 9.329539 0 39 4" + "\n" +
+        "P 0.000000 0.000000 0 10 1" + "\n" +
+        "P 21.505491 23.612473 0 10 1" + "\n" +
+        "P 5.149222 9.483821 0 56 2" + "\n" +
+        "P 16.356269 14.128652 0 56 2" + "\n" +
+        "P 8.407749 22.180422 0 27 4" + "\n" +
+        "P 13.097742 1.432050 0 27 4" + "\n" +
+        "P 19.427907 13.205651 0 18 2" + "\n" +
+        "P 2.077584 10.406821 0 18 2";
 
-        for (int i = 0; i < 2; i++) {
-            
-        }
-        long started = System.currentTimeMillis();
-        PermutationsOfN permutations = new PermutationsOfN();
-        Collection result = permutations.permutations(input,4);
-        long finished = System.currentTimeMillis();
-        long time = finished - started;
-
-        //result.forEach(iets -> {System.out.println(iets);});
-        System.out.println("time taken: " + time);
+        
 
     };
 
