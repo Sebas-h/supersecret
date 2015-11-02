@@ -49,13 +49,6 @@ public class Test {
         System.out.println("time: " + (time2-time) );
 
 
-        PlanetWars pw = new PlanetWars(input);
-        Uniform_cost uc = new Uniform_cost(pw);
-        long s = System.currentTimeMillis();
-        uc.search();
-        long e = System.currentTimeMillis();
-        System.out.println(s-e);
-
     };
 
 }

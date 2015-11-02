@@ -74,7 +74,7 @@ public class Uniform_cost {
     }
 
     private boolean goaltest(Node node) {
-        return  (node.value / 1.1) > ROOT.value;
+        return  (node.value / 1.05) > ROOT.value;
     }
 
 
