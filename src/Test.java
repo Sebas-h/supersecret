@@ -32,7 +32,12 @@ public class Test {
         "P 19.427907 13.205651 0 18 2" + "\n" +
         "P 2.077584 10.406821 0 18 2";
 
-        
+        PlanetWars pw = new PlanetWars(input);
+        Uniform_cost uc = new Uniform_cost(pw);
+        long s = System.currentTimeMillis();
+        uc.search();
+        long e = System.currentTimeMillis();
+        System.out.println(s-e);
 
     };
 
