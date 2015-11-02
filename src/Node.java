@@ -1,4 +1,3 @@
-import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -12,42 +11,48 @@ public class Node {
 
     float value;
 
-    public Node(PlanetWars pw, int depth, Turn firstTurn){
+    Uniform_cost search;
+
+    public Node(PlanetWars pw, int depth, Turn firstTurn, Uniform_cost searchAlgo){
         planetWars = pw;
         this.depth = depth;
         first_Turn = firstTurn;
         value = planetWars.value_myself();
+        search = searchAlgo;
     }
 
 
     public List<Node> getChildren(){
 
         List<Node> children = new ArrayList<>();
+
+
         List<Turn> turnList = getTurns();
         // For every Attack possible.
         for(Turn turn : turnList){
             // Simulate one turn
             Simulation sim = new Simulation(planetWars, turn.attacks);
-            PlanetWars simulationResult = sim.simulate_one_turn();
+            PlanetWars simulationResult = sim.simulate_until_arrival();
             if (first_Turn == null){
                 children.add(new Node(
                         simulationResult,
                         depth + 1,
-                        new Turn(turn.attacks)));
+                        new Turn(turn.attacks),
+                        search));
             }
             else{
                 children.add(
                         new Node(
                                 simulationResult,
                                 depth + 1,
-                                first_Turn));
+                                first_Turn,
+                                search));
             }
 
         }
         return children;
     }
 
-    // Wat doet dit??
     public List<Turn> getTurns(){
         List<Turn> output = new ArrayList<>();
         List<Turn> a = getNtoN();
@@ -55,8 +60,6 @@ public class Node {
         List<Turn> b = getNtoM();
         output.addAll(a);
         output.addAll(b);
-
-
 
         return output;
     }
@@ -67,6 +70,7 @@ public class Node {
         List<Planet> notMyPlanets = planetWars.FilteredNotMyPlanets();
 
         // TODO: skip some possibilities when N gets to big
+        // get smallest size of smallest list
         int N;
         if(myPlanets.size() > notMyPlanets.size()){
             N = notMyPlanets.size();
@@ -126,9 +130,11 @@ public class Node {
             // if the product is a result of N to N
             else{
                 boolean allAttacksValid = true;
+
                 List<Planet> myPlanets = currentProduct.get(0);
                 List<Planet> notMyPlanets = currentProduct.get(1);
-                for(int i = 0; i<myPlanets.size(); i++){
+
+                for(int i = 0; i < myPlanets.size(); i++){
                     Planet myPlanet = myPlanets.get(i);
                     Planet notMyPlanet = notMyPlanets.get(i);
                     if (isValidAttack(myPlanet, notMyPlanet)){

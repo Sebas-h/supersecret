@@ -16,9 +16,12 @@ public class MyBot {
     public static void DoTurn(PlanetWars pw) {
         Uniform_cost uc = new Uniform_cost(pw);
         Node result = uc.search();
-        for(Attack attack : result.first_Turn.attacks){
-            pw.IssueOrder(attack.source, attack.destination, attack.amount);
+        if(result.first_Turn != null){
+            for(Attack attack : result.first_Turn.attacks){
+                pw.IssueOrder(attack.source, attack.destination, attack.amount);
+            }
         }
+
     }
 
 
