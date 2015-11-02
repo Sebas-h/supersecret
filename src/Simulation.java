@@ -17,6 +17,21 @@ public class Simulation {
         this.attacks = attacks;
     }
 
+    public PlanetWars simulate_until_arrival(){
+        boolean arrival = false;
+        // Departure
+        for (Attack attack : attacks)
+        {
+            planetWars.depart(attack);
+        }
+        while(!arrival){
+            //advancement
+            planetWars.advance();
+            //arrival
+            arrival = planetWars.arrival();
+        }
+        return planetWars;
+    }
 
     public PlanetWars simulate_one_turn(){
         // Departure

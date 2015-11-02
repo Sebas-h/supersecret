@@ -70,13 +70,13 @@ public class PlanetWars implements Cloneable {
 
     }
 
-    public void arrival(){
+    public boolean arrival(){
         List<Fleet> fleets = new ArrayList<>();
-        Fleets().forEach(fleet -> {
-            if (fleet.TurnsRemaining() == 0) {
-                fleets.add(fleet);
-            }
-        });
+        boolean arrival = false;
+        for (Fleet fleet : Fleets()) {
+            arrival = true;
+            fleets.add(fleet);
+        }
 
 
         fleets.forEach(fleet -> {
@@ -93,6 +93,7 @@ public class PlanetWars implements Cloneable {
                 dest.NumShips(dest.NumShips() + fleet.NumShips());
             }
         });
+        return arrival;
     }
 
     public Float value_myself(){

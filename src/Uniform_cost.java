@@ -12,7 +12,7 @@ public class Uniform_cost {
     List<Node> queue = new ArrayList<>();
 
     public Uniform_cost(PlanetWars planetWars) {
-        ROOT = new Node(planetWars, 0, null);
+        ROOT = new Node(planetWars, 0, null, this);
         List<Node> root_children = ROOT.getChildren();
         Attack longest_attack = longestAttack(root_children);
         Attack shortest_attack = shortestAtack(root_children);
@@ -23,7 +23,12 @@ public class Uniform_cost {
     }
 
     public Node search() {
+        long start = System.currentTimeMillis();
         while (queue.size() > 0) {
+            if(System.currentTimeMillis() - start>950){
+                System.err.println("geen tijd meer");
+                return new Node(null,0,null,null);
+            }
             Node currentNode = queue.get(0);
             queue.remove(0);
             if (currentNode.depth <= maxDepth) {
@@ -37,7 +42,7 @@ public class Uniform_cost {
             }
 
         }
-        return new Node(null, 0, null);
+        return new Node(null, 0, null, null);
     }
 
     private void sortQueue() {
