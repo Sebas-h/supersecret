@@ -542,9 +542,27 @@ public class PlanetWars implements Cloneable {
             }
         });
 
+        List<Planet> fnmp = new ArrayList<>();
+        for(Planet planet : nmp){
+            if(!fleet_already_sent(planet)){
+                fnmp.add(planet);
+            }
+        }
+
+
+        if(fnmp.size() > 4 ) {
+            // Get the {limit} planets with largest nr of ships:
+            for (int i = fnmp.size()-1; i >= fnmp.size()-4; i--) {
+                fp.add(fnmp.get(i));
+            }
+            return fp;
+        }
+        return fnmp;
+
+/*
         int j = 1;
         boolean done = false;
-        while (!done){
+        while (!done && nmp.size() > 0 ){
             if(fleet_already_sent(nmp.get(nmp.size()-j))){
                 nmp.remove(nmp.size() - j);
                 j = 1;
@@ -558,11 +576,11 @@ public class PlanetWars implements Cloneable {
         }
 
         // Get the {limit} planets with largest nr of ships:
-        for (int i = 1; i < limit ; i++) {
+        for (int i = 1; i <= limit ; i++) {
             fp.add(nmp.get(nmp.size()-i));
         }
         return fp;
-
+*/
     }
 
     private boolean fleet_already_sent(Planet destination) {

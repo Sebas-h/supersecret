@@ -29,7 +29,11 @@ public class Node {
 
     public List<Node> getChildren() {
         List<Node> children = new ArrayList<>();
-        List<Turn> turnList = getNtoN();
+        List<Turn> turnList = new ArrayList<>();
+        if(planetWars.FilteredNotMyPlanets().size()>1){
+            turnList.addAll(get1toM());
+        }
+        turnList.addAll(getNtoN());
         // For every Attack possible.
         for (Turn turn : turnList) {
             // Simulate one turn
@@ -75,6 +79,26 @@ public class Node {
     }
 
 
+    private List<Turn> get1toM(){
+        // get strongest planet
+        List<Turn> output = new ArrayList<>();
+        List<Planet> myplanets = new ArrayList<>();
+        myplanets.add(planetWars.FilteredMyPlanets().get(0));
+
+        List<List<Planet>> tmp = new ArrayList<>();
+        tmp.add(myplanets);
+
+        List<Planet> notMyPlanets = planetWars.FilteredNotMyPlanets();
+
+        // M kleiner maken voor als notMyPLanets < 5 and not 1
+        int limit = notMyPlanets.size();
+        for(int M = 2; M <= limit; M++ ){
+            output.addAll(productToTurn(product(tmp, getCombinations(notMyPlanets, M))));
+        }
+        return output;
+
+    }
+
 
     private List<Turn> productToTurn(List<List<List<Planet>>> product) {
         List<Turn> output = new ArrayList<>();
@@ -86,15 +110,19 @@ public class Node {
                 Planet myPlanet = currentProduct.get(0).get(0);
                 List<Planet> notMyPlanets = currentProduct.get(1);
 
-                for (Planet notMyPlanet : notMyPlanets) {
-                    attacks.add(new Attack( myPlanet,
-                                            notMyPlanet,
-                                            notMyPlanet.NumShips() + 1,
-                                            planetWars.Distance(myPlanet, notMyPlanet)
+
+                if(isValid1MAttack(myPlanet, notMyPlanets)){
+                    for (Planet notMyPlanet : notMyPlanets) {
+                        attacks.add(new Attack( myPlanet,
+                                        notMyPlanet,
+                                        notMyPlanet.NumShips() + 1,
+                                        planetWars.Distance(myPlanet, notMyPlanet)
                                 )
-                    );
+                        );
+                    }
+                    output.add(new Turn(attacks));
                 }
-                output.add(new Turn(attacks));
+
             }
             // if the product is a result of N to N
             else {
@@ -139,6 +167,18 @@ public class Node {
             }
         }
         return output;
+    }
+
+    private boolean isValid1MAttack(Planet myPlanet,List<Planet> notMyPlanets){
+        int shipsRequired = 0;
+        for (Planet notMyPlanet : notMyPlanets) {
+            shipsRequired += planetWars.predictShips(notMyPlanet, planetWars.Distance(myPlanet, notMyPlanet)) + 1;
+            if(shipsRequired >= myPlanet.NumShips()) {
+                return false;
+            }
+
+        }
+        return true;
     }
 
     private List<List<Planet>> getPermutations(List<Planet> planets, int size) {

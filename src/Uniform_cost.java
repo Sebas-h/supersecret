@@ -14,13 +14,13 @@ public class Uniform_cost {
 
     PlanetWars pwtest;
 
-    public Uniform_cost(PlanetWars planetWars) {
+    public Uniform_cost(PlanetWars planetWars, TimeTest tt) {
         pwtest = planetWars;
         ROOT = new Node(planetWars, 0, null, this);
         List<Node> root_children = ROOT.getChildren();
         Attack longest_attack = longestAttack(root_children);
         Attack shortest_attack = shortestAtack(root_children);
-
+        tt.setInitialAttacksSize(root_children.size());
         goalVal = 1.05;
         maxDepth = longest_attack.turns;
         minDepth = shortest_attack.turns;

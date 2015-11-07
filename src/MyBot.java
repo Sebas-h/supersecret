@@ -14,11 +14,15 @@ public class MyBot {
     // your own. Check out the tutorials and articles on the contest website at
     // http://www.ai-contest.com/resources.
     public static void DoTurn(PlanetWars pw) {
-        Uniform_cost uc = new Uniform_cost(pw);
-
+        TimeTest tt = new TimeTest();
+        Uniform_cost uc = new Uniform_cost(pw, tt);
+        tt.start();
         Node result = uc.search();
+        tt.stop();
+        tt.writeResults();
         if(result.first_Turn != null){
             for(Attack attack : result.first_Turn.attacks){
+                System.err.println(attack.source.PlanetID() +" "+  attack.destination.PlanetID() + " " + attack.amount);
                 pw.IssueOrder(attack.source, attack.destination, attack.amount);
             }
         }
