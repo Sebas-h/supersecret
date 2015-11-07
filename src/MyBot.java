@@ -15,6 +15,7 @@ public class MyBot {
     // http://www.ai-contest.com/resources.
     public static void DoTurn(PlanetWars pw) {
         Uniform_cost uc = new Uniform_cost(pw);
+
         Node result = uc.search();
         if(result.first_Turn != null){
             for(Attack attack : result.first_Turn.attacks){
@@ -51,7 +52,7 @@ public class MyBot {
                             PlanetWars pw = new PlanetWars(message);
 
                             System.err.println("\nturn " + turn + " :");
-                            System.err.println(pw.gamestateString);
+                            //System.err.println(pw.gamestateString);
                             try {
                                 DoTurn(pw);
                             } catch (Exception e) {

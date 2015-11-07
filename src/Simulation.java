@@ -17,8 +17,9 @@ public class Simulation {
         this.attacks = attacks;
     }
 
-    public PlanetWars simulate_until_arrival(){
+    public SimulationResult simulate_until_arrival(){
         boolean arrival = false;
+        int turns = 0;
         // Departure
         for (Attack attack : attacks)
         {
@@ -29,8 +30,9 @@ public class Simulation {
             planetWars.advance();
             //arrival
             arrival = planetWars.arrival();
+            turns ++;
         }
-        return planetWars;
+        return new SimulationResult(planetWars, turns);
     }
 
     public PlanetWars simulate_one_turn(){

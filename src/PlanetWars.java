@@ -73,12 +73,18 @@ public class PlanetWars implements Cloneable {
     public boolean arrival(){
         List<Fleet> fleets = new ArrayList<>();
         boolean arrival = false;
-        for (Fleet fleet : Fleets()) {
-            arrival = true;
-            fleets.add(fleet);
+
+        if(Fleets().size() == 0){
+            return true;
         }
 
+        for (Fleet fleet : Fleets()) {
+            if(fleet.TurnsRemaining() == 0){
+                arrival = true;
+                fleets.add(fleet);
+            }
 
+        }
         fleets.forEach(fleet -> {
             Planet dest = GetPlanet(fleet.DestinationPlanet());
             if(fleet.Owner()!= dest.Owner()){
@@ -96,7 +102,7 @@ public class PlanetWars implements Cloneable {
         return arrival;
     }
 
-    public Float value_myself(){
+    /*public Float value_myself(){
 
         int my_planets = MyPlanets().size();
         int enemy_planets = EnemyPlanets().size();
@@ -156,6 +162,18 @@ public class PlanetWars implements Cloneable {
             ship_value = my_ships;
         }
         float value = ship_value + planet_value + growth_value;
+        return value;
+    }*/
+
+    public float value_myself(){
+        //int myships = this.NumShips(1);
+        //int myplanets = this.NumPlanets();
+        int mygrowth = 0;
+        float value;
+        for(Planet planet : MyPlanets()){
+            mygrowth += planet.GrowthRate();
+        }
+        value = (float) mygrowth;
         return value;
     }
 
