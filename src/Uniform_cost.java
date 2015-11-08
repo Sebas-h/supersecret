@@ -33,14 +33,7 @@ public class Uniform_cost {
 
             if(System.currentTimeMillis() - start > 900){
                 System.err.println("geen tijd meer");
-                Node max = Collections.max(queue, new Comparator<Node>() {
-                    @Override
-                    public int compare(Node a, Node b) {
-                        return a.value > b.value ? 1 : a.value == b.value ? 0 : -1;
-                    }
-                });
-                System.err.println(max.first_Turn.attacks.get(0).amount);
-                return max;
+                return bestNode;
                 //return new Node(null,0,null,null);
             }
             Node currentNode = queue.get(0);

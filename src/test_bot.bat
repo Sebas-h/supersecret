@@ -14,5 +14,5 @@ set MAP=maps/map%mapNumber%.txt
 
 @REM runs the game
 
-java -jar tools/PlayGame.jar %MAP% 1000 1000 log.txt "java MyBot" "java -jar example_bots/BullyBot.jar"| java -jar tools/ShowGame.jar
-
+@REM java -jar tools/PlayGame.jar %MAP% 1000 1000 log.txt "java MyBot" "java -jar example_bots/DualBot.jar"| java -jar tools/ShowGame.jar
+java -jar tools/PlayGame.jar %MAP% 1000 1000 log.txt "java MyBot" "example_bots/PlanetwarBot.exe"| java -jar tools/ShowGame.jar
